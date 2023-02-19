@@ -1,8 +1,12 @@
-<mat-toolbar class="toolbar">
-  <span><a [routerLink]="'/landing'"><div class="logo"> <img src="assets/images/macro-white.png" width="95px" height="55px"></div></a></span>
-  <span class="example-spacer"><a [routerLink]="'/login'"><mat-icon class="login">account_circle</mat-icon></a>
-    <button *ngIf="isLoggedIn()" mat-raised-button color="warn" (click)="logout()">Logout</button></span>
-</mat-toolbar>
+<mat-toolbar class="toolbar d-flex justify-content-between">
+  <span><div class="logo"><a [routerLink]="'/landing'"><img src="assets/images/macro-white.png" width="95px" height="55px"></a> </div></span>
+  <div class="login-icon" gutter="20px"><mat-icon>account_circle</mat-icon>Login</div>
+  <div class="btn-toolbar pull-right">
+   
+    
+    <span><a [routerLink]="'/login'"><mat-icon class="loginIcon">account_circle</mat-icon></a></span>
+  </div>
+  </mat-toolbar>
 <!-- <div class = container mt-5>
         <div class="card" style="padding: 20px;">
             <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)">
@@ -17,26 +21,27 @@
       <div class="row">
         <div class="col-6">
           <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
             <mat-label>User Name</mat-label>
             <input matInput ngModel type="text"  name="userName" placeholder="user name"  id="userName" class="form-control mb-3" >
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
   
-            <mat-form-field appearance="outline" class="w-100">
+            <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
               <mat-label>Password</mat-label>
-              <input matInput ngModel type="password"  name="userPassword" placeholder="Password"  id="userPassword" class="form-control mb-3">
+              <input matInput ngModel type="password"  name="userPassword" placeholder="Please enter your password"  id="userPassword" class="form-control mb-3">
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
           
-            <div align="end">
-            <button mat-stroked-button color="primary" type="submit">Submit</button>
+            <div class="d-flex justify-content-between">
+              <button [routerLink]="'/signup'" mat-button color="primary">Don't have an Account?</button>
+              <button mat-stroked-button color="primary" type="submit">Submit</button>
           </div>
         </form>
         </div>
         <div class="col-6">
-          <div class="d-flex justify-content-center">
-          <img src="assets/images/login.png" id="camera">
+          <div class="logincamera d-flex justify-content-center">
+          <img src="assets/images/logincamera.png" id="logincamera">
         </div>
         </div>
       </div>

@@ -1,17 +1,15 @@
-.container {
-    background-color: #00C5AB !important;
-    
-}
 
-:host body {
-    background-color: #00C5AB;
-}
+
+
 
 /* Start Landing Page */
 
 .landing-page {
     position: relative;
-    background-color: #00C5AB !important;
+    background-color: #00C5AB;
+    height: 100%;
+    width: 100vw;
+  height: 100vh;
 }
 
 .landing-page .header-area {
@@ -20,18 +18,16 @@
     position: relative;
 }
 
-.icon {
-    color: #FFF;
-    margin-top: 15px;
-    margin-left: 30px;
-}
-
 .landing-page .header-area .logo {
     margin-top: 0px;
 }
 
 .logo {
-    width: 190px;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
 }
 
 .landing-page .header-area .links {
@@ -114,13 +110,6 @@
 
 }
 
-.material-icons {
-    font-size: 30px;
-    margin-right: -35px;
-    height: 30px;
-    width: 30px
-}
-
 .text-link {
     display: inline-block;
     vertical-align: top;
@@ -142,7 +131,7 @@
     max-width: 90%;
     margin-left: -300px;
     display: block;
-    margin-top: -90px;
+    /* margin-top: -90px; */
 }
 
 .clearfix {
@@ -151,8 +140,17 @@
 .toolbar{
     background-color: #00C5AB;
 }
-.login{
+.loginIcon{
     color: azure;
+    /*height: 60px !important;
+    width: 60px !important;
+    */display: flex;
+    align-items: center;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
 }
 
 /* End Landing Page */

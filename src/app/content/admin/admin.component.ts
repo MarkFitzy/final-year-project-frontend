@@ -23,6 +23,7 @@ export class AdminComponent implements OnInit {
     'Image',
     'Caption',
     'Description',
+    "Post Type",
     'Rating',
     'Avg Rating',
     'Camera Model',

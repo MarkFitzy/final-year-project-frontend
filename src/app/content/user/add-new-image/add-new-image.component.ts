@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileHandle } from 'src/app/_model/file-handle.model';
 import { ImagePost } from 'src/app/_model/imagePost.model';
 import { PostImageService } from 'src/app/_services/post-imageservice';
@@ -17,14 +17,17 @@ import { UserService } from 'src/app/_services/user.service';
 export class AddNewImageComponent implements OnInit {
   isUserLoggedOn: boolean | undefined;
   isImageSelected = false;
+  selected = 'Nature';
+  isImageNew = true;
   imagePost: ImagePost = {
+    postId: 0,
     postCaption: '',
     postDescription: '',
     postCamera: '',
     postLens: '',
     postAperture: '',
     postImages: [],
-
+    postType: this.selected,
   };
 
   constructor(
@@ -32,10 +35,18 @@ export class AddNewImageComponent implements OnInit {
     private router: Router,
     public userService: UserService,
     private postImageService: PostImageService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imagePost = this.activatedRoute.snapshot.data['postManager'];
+
+    if(this.imagePost && this.imagePost.postId){
+        this.isImageNew = false;
+    }
+    
+  }
   public isLoggedIn() {
     this.userAuthService.isUserLoggedIn = false;
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
@@ -99,9 +110,8 @@ export class AddNewImageComponent implements OnInit {
     }
   }
 
-  removeImages(i : number) {
+  removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);
     this.isImageSelected = false;
-
   }
 }

@@ -1,0 +1,53 @@
+<mat-toolbar class="toolbar d-flex justify-content-between">
+    <span
+      ><div class="logo">
+        <a  [routerLink]="'/homepage'">
+        <img
+          src="assets/images/macro-white.png"
+          width="95px"
+          height="55px"
+        /></a></div
+    ></span>
+    <div class="btn-toolbar pull-right">
+      <div class="tool-button">
+      <button mat-button class="upload mr-2" [routerLink]="'/addNewImage'" >
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
+    </div>
+      <button mat-raised-button (click)="logout()" class="btn power-off mr-2">
+        <mat-icon color="#eee">settings_power</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="Back mt-2" [routerLink]="'/homepage'">
+    <mat-icon >arrow_back</mat-icon>Back
+  </div>
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="photoOnFocus col-12">
+            <mat-card class="imageCard" *ngFor="let file of imagePost?.postImages">
+                <img class="imagePost" [src]="file.url">
+            </mat-card>
+        </div>
+      </div>
+        <div class="row">
+        <div class="imageInfo col-12">
+            <div class="post-info">
+              <mat-card>
+                <mat-card-content><div class="mt-3">
+                  <h2>{{imagePost?.postCaption}}</h2>
+              </div>
+              <div class="mt-3">
+                  {{imagePost?.postDescription}}
+              </div>
+              <div class="mt-3">
+                  <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span><span class="cameraTypes d-flex justify-content-center"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span><span class="cameraTypes d-flex justify-content-center"><mat-icon >center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              </div></mat-card-content>
+              </mat-card>
+                
+            </div>
+        </div>
+    </div>
+</div>

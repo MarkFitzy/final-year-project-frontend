@@ -43,6 +43,17 @@
     max-width: 500px;
 }
 
+.added-image {
+    margin-left: 10px;
+    
+}
+
+.preview-photo {
+    box-shadow: none;
+    background: none;
+}
+
+
 /* .img {
     margin-top: -187px;
 } */

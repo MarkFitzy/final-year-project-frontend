@@ -17,7 +17,14 @@
   color: azure;
 }
 
-#camera {
+#signupcamera {
   width: 400px;
+  margin-top: 25px;
+}
+
+.signup-icon {
+  color: #ffff;
+  display: flex;
+  align-items: center;
 }
 

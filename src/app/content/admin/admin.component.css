@@ -14,3 +14,9 @@ table {
     color: #00C5AB;
 }
 
+.admin {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+

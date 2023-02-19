@@ -21,6 +21,10 @@ export class PostImageService {
     return this.httpClient.delete("http://localhost:9090/deletePostDetails/" + postId);
   }
 
+  public getPostById(postId: any){
+    return this.httpClient.get<ImagePost>("http://localhost:9090/getPostById/" + postId);
+  }
+
   // public getUser() {
   //   return this.httpClient.delete("http://localhost:9090/deletePostDetails/" + postId);
   // }

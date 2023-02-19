@@ -1,4 +1,4 @@
-.toolbar{
+.toolbar {
     background-color: #00C5AB;
 }
 
@@ -9,13 +9,16 @@ mat-grid-tile {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-    
+
 }
 
 .container {
-    max-width: 400px ;
-    max-height: 400px ;
+    max-width: 900px;
+    max-height: 1400px;
+    display: flex;
+    justify-content: space-between;
 }
+
 /* mat-card {
     background: none;
     border: none;
@@ -29,7 +32,7 @@ mat-grid-tile {
     max-height: 70%;
     margin-left: auto;
     margin-right: auto;
-    
+
 }
 
 img.image {
@@ -47,17 +50,29 @@ img.image {
 }
 
 .my-card {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  background-clip:padding-box;
+  border-radius: 25px ;
+  -webkit-border-radius: 25px ;
+  -moz-border-radius: 25px ;
+  -ms-border-radius: 25px ;
+  -o-border-radius: 25px ;
+    
+  
+  
 }
+
 /* #specs {
     gap: 10px;
     align-self: flex-end;
     margin-left: 10px;
 } */
 
-.Caption{
+.Caption {
     font-size: 1.5em;
-   text-align: center;
+    text-align: center;
 }
 
 p {
@@ -66,4 +81,23 @@ p {
 
 .rating-list li.selected {
     color: #ffd700;
+}
+
+.col-gap {
+    column-gap: 25px;
+}
+
+#mycontainer {
+    display: flex;
+    flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.image {
+    cursor: pointer;
+}
+
+.matCardCenter {
+    margin-left: 50px;
 }

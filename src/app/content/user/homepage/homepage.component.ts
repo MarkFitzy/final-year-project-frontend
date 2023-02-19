@@ -1,21 +1,26 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostImageService } from 'src/app/_services/post-imageservice';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { ImagePost } from 'src/app/_model/imagePost.model';
 import { ImageProcessingService } from '../../admin/image-processing.service';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class HomepageComponent implements OnInit {
+  control = new FormControl('');
+  streets: string[] = ['MarkG', 'John12', 'ShaneMcN', 'Christo'];
+  filteredStreets: Observable<string[]> | undefined;
+  //delete above
   isUserLoggedOn: boolean | undefined;
   postDetails : [] | any;
 
@@ -27,7 +32,13 @@ export class HomepageComponent implements OnInit {
     private imageProcessingService: ImageProcessingService
   ) {}
 
-  ngOnInit(): void {this.getAllPosts();}
+  ngOnInit(): void {this.getAllPosts();
+    //delete below
+    this.filteredStreets = this.control.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );}
+    //delete above
   public isLoggedIn() {
     this.userAuthService.isUserLoggedIn = false;
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
@@ -67,5 +78,18 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         },
       });
+  }
+
+  postOnFocus(postId : any) {
+    this.router.navigate(['/post-on-focus', {postId : postId}]);
+  }
+  //delete below
+  private _filter(value: string): string[] {
+    const filterValue = this._normalizeValue(value);
+    return this.streets.filter(street => this._normalizeValue(street).includes(filterValue));
+  }
+
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
   }
 }

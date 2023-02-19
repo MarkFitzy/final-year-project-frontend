@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit {
   ) {}
   isUserLoggedOn : boolean | undefined;
 
-  async ngOnInit(): Promise<void> {
-    await (2000);
+  ngOnInit() {
   }
 
   login(loginForm: NgForm) {
@@ -25,6 +24,8 @@ export class LoginComponent implements OnInit {
       next: (response: any) => {
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
+        console.log("JWT TOKEN -->" + this.userAuthService.setToken(response.jwtToken));
+        console.log("USER ROLE -->" + this.userAuthService.setRoles(response.user.role));
 
         const role = response.user.role[0].roleName;
         if (role == 'Admin') {
