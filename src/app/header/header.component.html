@@ -1,0 +1,5 @@
+<mat-toolbar class="toolbar">
+    <span><div class="logo"> <img src="assets/images/macro-white.png" width="95px" height="55px"></div></span>
+    <span class="example-spacer"><button *ngIf="!isLoggedIn()" mat-raised-button color=#70e000 (click)="login()">login</button>
+      <button *ngIf="isLoggedIn()" mat-raised-button color="warn" (click)="logout()">Logout</button></span>
+  </mat-toolbar>

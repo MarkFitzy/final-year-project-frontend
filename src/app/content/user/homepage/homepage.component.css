@@ -1,0 +1,69 @@
+.toolbar{
+    background-color: #00C5AB;
+}
+
+mat-grid-tile {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    
+}
+
+.container {
+    max-width: 400px ;
+    max-height: 400px ;
+}
+/* mat-card {
+    background: none;
+    border: none;
+    box-shadow: none;
+} */
+
+
+
+.image-layout {
+    max-width: 80%;
+    max-height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+img.image {
+    border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -ms-border-radius: 40px 40px 40px 40px;
+    -o-border-radius: 40px 40px 40px 40px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.mat-icon {
+    vertical-align: middle;
+}
+
+.my-card {
+    margin-bottom: 20px;
+}
+/* #specs {
+    gap: 10px;
+    align-self: flex-end;
+    margin-left: 10px;
+} */
+
+.Caption{
+    font-size: 1.5em;
+   text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.rating-list li.selected {
+    color: #ffd700;
+}

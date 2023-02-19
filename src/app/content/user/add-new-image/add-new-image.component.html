@@ -1,0 +1,82 @@
+<mat-toolbar class="toolbar">
+  <span
+    ><div class="logo">
+      <a  [routerLink]="'/homepage'">
+      <img
+        src="assets/images/macro-white.png"
+        width="95px"
+        height="55px"
+      /></a></div
+  ></span>
+  <div class="btn-toolbar pull-right">
+    <button mat-button class="btn mr-2" [routerLink]="'/addNewImage'">
+      <mat-icon>camera_enhance</mat-icon>Add Image
+    </button>
+    <button mat-raised-button color="warn" (click)="logout()" class="btn mr-2">
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
+<div class="container mt-5">
+  <div class="card p-2">
+    <div class="row">
+      <div class="col-6">
+        <form #postForm = "ngForm" (ngSubmit)="addPost(postForm)">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Image Caption</mat-label>
+          <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption"/>
+          <mat-icon matSuffix>crop_original</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Image Description</mat-label>
+            <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription"/>
+            <mat-icon matSuffix>code</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Camera Model</mat-label>
+            <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera"/>
+            <mat-icon matSuffix>camera_alt</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Camera Lens</mat-label>
+            <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens"/>
+            <mat-icon matSuffix>camera</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Camera Aperture</mat-label>
+            <input maxlength="10" matInput placeholder="Camera Aperture Setting" [(ngModel)]="imagePost.postAperture" name="postAperture"/>
+            <mat-icon matSuffix>center_focus_weak</mat-icon>
+          </mat-form-field>
+        
+          <div align="end">
+          <button mat-stroked-button color="primary" style="margin-right: 3px;">Clear</button>
+          <button mat-stroked-button color="primary" type="submit">Add Image</button>
+        </div>
+      </form>
+      </div>
+      <div class="col-6">
+        <div class="d-flex justify-content-between">
+          <input type="file" name="image" id="image"  value="select" #selectFile 
+          (change)="onFileSelected($event)">
+          <button class="btn-remove-image"[hidden]="!isImageSelected" mat-raised-button color="warn" *ngFor="let file of imagePost.postImages; let i = index" (click)="removeImages(i)"><mat-icon  color="#eee" >cancel</mat-icon> Remove</button>
+        </div>
+      
+      <div class="mt-1">
+        <div class="row">
+          <mat-card class="example-card" *ngFor="let file of imagePost.postImages; let i = index">
+            <mat-card-header>
+            </mat-card-header>
+            <img mat-card-image [src]="file.url">
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+

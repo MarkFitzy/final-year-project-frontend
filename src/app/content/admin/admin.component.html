@@ -1,0 +1,66 @@
+<mat-toolbar class="toolbar">
+    <span><div class="logo"> <img src="assets/images/macro-white.png" width="95px" height="55px"></div> ADMIN</span>
+    <span class="example-spacer">
+      <button mat-raised-button color="warn" (click)="logout()">Logout</button></span>
+  </mat-toolbar>
+<div class="mt-5 p-3">
+  <table mat-table [dataSource]="postDetails" class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.postId}} </td>
+    </ng-container>
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="Image">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td mat-cell *matCellDef="let element"> <button mat-icon-button class="btn-image" (click)="showPhoto(element)"><mat-icon >image</mat-icon></button> </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Caption">
+      <th mat-header-cell *matHeaderCellDef> Caption </th>
+      <td mat-cell *matCellDef="let element"> {{element.postCaption}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.postDescription}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Rating">
+      <th mat-header-cell *matHeaderCellDef> Rating </th>
+      <td mat-cell *matCellDef="let element"> {{element.postRating}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Avg Rating">
+      <th mat-header-cell *matHeaderCellDef> Avg Rating </th>
+      <td mat-cell *matCellDef="let element"> {{element.avgPostRating}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Camera Model">
+      <th mat-header-cell *matHeaderCellDef> Camera Model </th>
+      <td mat-cell *matCellDef="let element"> {{element.postCamera}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Lens Type">
+      <th mat-header-cell *matHeaderCellDef> Lens Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.postLens}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Aperture Setting">
+      <th mat-header-cell *matHeaderCellDef> Aperture Setting </th>
+      <td mat-cell *matCellDef="let element"> {{element.postAperture}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">  <button mat-icon-button class="btn-delete-post" (click) = "deletePost(element.postId)"><mat-icon >cancel</mat-icon></button></td>
+    </ng-container>
+
+   
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+  

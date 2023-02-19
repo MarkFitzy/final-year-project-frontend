@@ -1,0 +1,55 @@
+<mat-toolbar class="toolbar">
+  <span
+    ><div class="logo">
+      <img
+        src="assets/images/macro-white.png"
+        width="95px"
+        height="55px"
+      /></div
+  ></span>
+  <div class="btn-toolbar pull-right">
+    <button mat-button class="btn mr-2" [routerLink]="'/addNewImage'">
+      <mat-icon>camera_enhance</mat-icon>Add Image
+    </button>
+    <button mat-raised-button color="warn" (click)="logout()" class="btn mr-2">
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
+
+<div class="container mt-5">
+  <mat-card class="my-card" *ngFor="let p of postDetails"
+  width="200px" gutter="25">
+    <mat-card-header class="d-flex justify-content-between">
+      <img mat-card-avatar src="" alt="">
+        <mat-icon 
+matTooltip="Camera Model: {{ p.postCamera }}  
+Lens: {{ p.postLens }}  
+Aperture: {{ p.postAperture }}" 
+matTooltipPosition="above" 
+matTooltipClass="delay-msg-tooltip">
+info
+</mat-icon>
+
+      <mat-card-title></mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="p.postImages[0].url" class="image">
+    <mat-card-content>
+      <div class="mt-3">
+        <p><b class="Caption">{{ p.postCaption }}</b></p>
+      </div>
+      <div class="mt-2">
+        <p>{{ p.postDescription }}</p>
+      </div>
+      <div class="mt-2">
+        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+      </div>
+    
+
+          
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card> 
+</div>

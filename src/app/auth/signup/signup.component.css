@@ -1,0 +1,23 @@
+.mat-stepper-horizontal {
+    margin-top: 50px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 50px;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  .toolbar{
+    background-color: #00C5AB;
+}
+.login{
+  color: azure;
+}
+
+#camera {
+  width: 400px;
+}
+

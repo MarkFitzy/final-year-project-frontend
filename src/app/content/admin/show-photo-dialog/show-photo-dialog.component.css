@@ -1,0 +1,19 @@
+mat-grid-tile {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-image {
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+.mat-grid-tile-content  {
+
+    max-width: 400px !important;
+    max-height: 700px !important;
+
+}

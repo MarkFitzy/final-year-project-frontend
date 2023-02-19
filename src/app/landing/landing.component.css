@@ -1,0 +1,158 @@
+.container {
+    background-color: #00C5AB !important;
+    
+}
+
+:host body {
+    background-color: #00C5AB;
+}
+
+/* Start Landing Page */
+
+.landing-page {
+    position: relative;
+    background-color: #00C5AB !important;
+}
+
+.landing-page .header-area {
+    display: flex;
+    padding: 25px 0 0;
+    position: relative;
+}
+
+.icon {
+    color: #FFF;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.landing-page .header-area .logo {
+    margin-top: 0px;
+}
+
+.logo {
+    width: 190px;
+}
+
+.landing-page .header-area .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.landing-page .header-area .links li {
+    margin-left: 30px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.landing-page .header-area .links li:last-child {
+    border: 0;
+    border-radius: 20px;
+    padding: 10px 18px;
+    color: #FFF;
+}
+
+.landing-page .info {
+    width: 50%;
+    float: left;
+    margin-top: 130px;
+}
+
+.landing-page .info h1 {
+    font-size: 52px;
+    margin: 0 0 20px;
+    line-height: 1.4;
+    color: #FFF;
+}
+
+.landing-page .info p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #FFF;
+}
+
+.landing-page .signup-button {
+    border: 0;
+    width: 130px;
+    border-radius: 29px;
+    padding: 12px 30px;
+    margin-top: 80px;
+    cursor: pointer;
+    background-color: #FFF !important;
+    color: #00C5AB;
+    -webkit-border-radius: 29px;
+    -moz-border-radius: 29px;
+    -ms-border-radius: 29px;
+    -o-border-radius: 29px;
+}
+
+.landing-page .login-button {
+    border: 0;
+    width: 120px;
+    border-radius: 29px;
+    padding: 12px 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    color: #FFF;
+    -webkit-border-radius: 29px;
+    -moz-border-radius: 29px;
+    -ms-border-radius: 29px;
+    -o-border-radius: 29px;
+}
+
+.buttons {
+    display: inline-block;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+.material-icons {
+    font-size: 30px;
+    margin-right: -35px;
+    height: 30px;
+    width: 30px
+}
+
+.text-link {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7px;
+}
+
+/* .landing-page .image {
+    width: 550px;
+    float: right;
+}
+
+.landing-page .image img {
+    
+} */
+
+#camera {
+    width: 550px;
+    
+    max-width: 90%;
+    margin-left: -300px;
+    display: block;
+    margin-top: -90px;
+}
+
+.clearfix {
+    clear: both;
+}
+.toolbar{
+    background-color: #00C5AB;
+}
+.login{
+    color: azure;
+}
+
+/* End Landing Page */

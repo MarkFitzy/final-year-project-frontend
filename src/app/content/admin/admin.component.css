@@ -1,0 +1,16 @@
+.toolbar{
+    background-color: #00C5AB;
+}
+
+table {
+    width: 100%;
+}
+
+.btn-delete-post:hover {
+    color: #e63946;
+}
+
+.btn-image:hover {
+    color: #00C5AB;
+}
+
