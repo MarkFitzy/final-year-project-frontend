@@ -8,5 +8,9 @@ export interface ImagePost {
     postLens: string,
     postAperture: string,
     postImages: FileHandle[],
+    userFirstName: string,
+    userLastName: string,
     postType: string,
+    userName: string,
+    
 }

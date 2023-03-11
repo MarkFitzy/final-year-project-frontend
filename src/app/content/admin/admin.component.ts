@@ -24,12 +24,12 @@ export class AdminComponent implements OnInit {
     'Caption',
     'Description',
     "Post Type",
-    'Rating',
-    'Avg Rating',
     'Camera Model',
     'Lens Type',
     'Aperture Setting',
+    'User Name',
     'Delete',
+    
   ];
 
   constructor(
@@ -45,6 +45,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllPosts();
+    this.isLoggedIn();
   }
 
   public isLoggedIn() {

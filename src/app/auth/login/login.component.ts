@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/_services/shared.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
 @Component({
@@ -12,9 +13,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private userAuthService: UserAuthService,
-    private router: Router
+    private router: Router,
+    private sharedService: SharedService,
   ) {}
   isUserLoggedOn : boolean | undefined;
+  userNameEntered: any;
+  isHidden = true;
 
   ngOnInit() {
   }
@@ -24,6 +28,11 @@ export class LoginComponent implements OnInit {
       next: (response: any) => {
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
+        this.userAuthService.setUserNameData(response.user.userName);
+        console.log("USERNAMEDATA");
+        console.log(this.userAuthService.getUserNameData())
+        this.userNameEntered = response.user.userName;
+        this.sharedService.setUserNameData(this.userNameEntered);
         console.log("JWT TOKEN -->" + this.userAuthService.setToken(response.jwtToken));
         console.log("USER ROLE -->" + this.userAuthService.setRoles(response.user.role));
 

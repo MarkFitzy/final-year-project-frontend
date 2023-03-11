@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PostImageService } from 'src/app/_services/post-imageservice';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -9,6 +9,7 @@ import { map, startWith } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { MatChipEvent,MatChipInputEvent } from '@angular/material/chips';
 
 
 @Component({
@@ -23,6 +24,9 @@ export class HomepageComponent implements OnInit {
   //delete above
   isUserLoggedOn: boolean | undefined;
   postDetails : [] | any;
+  profileSelected: string;
+  usernameInput: string = "";
+  myFormControl = new FormControl("");
 
   constructor(
     private userAuthService: UserAuthService,
@@ -32,13 +36,11 @@ export class HomepageComponent implements OnInit {
     private imageProcessingService: ImageProcessingService
   ) {}
 
-  ngOnInit(): void {this.getAllPosts();
-    //delete below
-    this.filteredStreets = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );}
-    //delete above
+  ngOnInit(): void {
+    this.userAuthService.getToken();
+    console.log(this.userAuthService.getToken());
+    this.isLoggedIn();
+    this.getAllPosts();}
   public isLoggedIn() {
     this.userAuthService.isUserLoggedIn = false;
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
@@ -46,6 +48,7 @@ export class HomepageComponent implements OnInit {
     return this.userAuthService.isLoggedIn();
     
   }
+  
 
   public logout() {
     this.userAuthService.isUserLoggedIn = false;
@@ -58,10 +61,15 @@ export class HomepageComponent implements OnInit {
   public login() {
     this.router.navigateByUrl('/login');
   }
+  searchByKeyword(searchKeyword: any) {
+    console.log(searchKeyword); 
+    this.postDetails = [];
+    this.getAllPosts(searchKeyword);
+  }
 
-  public getAllPosts() {
+  public getAllPosts(searchKey: string = "") {
     this.imagePostService
-      .getAllPosts()
+      .getAllPosts(searchKey)
       .pipe(
         map((x: ImagePost[], i) =>
           x.map((imagePost: ImagePost) =>
@@ -80,16 +88,15 @@ export class HomepageComponent implements OnInit {
       });
   }
 
-  postOnFocus(postId : any) {
-    this.router.navigate(['/post-on-focus', {postId : postId}]);
-  }
-  //delete below
-  private _filter(value: string): string[] {
-    const filterValue = this._normalizeValue(value);
-    return this.streets.filter(street => this._normalizeValue(street).includes(filterValue));
+  onSelectedProfile(event: MouseEvent){
+   
+    this.usernameInput = (event.target as HTMLDivElement).innerText;
+    console.log(this.usernameInput);
+    this.userAuthService.setUserProfileNameData(this.usernameInput);
+    this.router.navigate(['/otherProfiles']);
   }
 
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
+  postOnFocus(postId : any) {
+    this.router.navigate(['/post-on-focus', {postId : postId}]);
   }
 }

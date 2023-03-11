@@ -48,8 +48,9 @@
 
           <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" ngModel type="password"  name="userPassword"  id="userPassword" autocomplete="disabled">
-            <mat-icon matSuffix>lock</mat-icon>
+            <input matInput placeholder="Password" ngModel [type]="isHidden ? 'password' : 'text'"  name="userPassword"  id="userPassword" autocomplete="disabled">
+            <mat-icon class="hidePassword" (click)="isHidden = !isHidden" matSuffix>{{isHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+
           </mat-form-field>
         
           <div class="d-flex justify-content-between">

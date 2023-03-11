@@ -1,0 +1,122 @@
+<mat-toolbar class="toolbar d-flex justify-content-between">
+    <span
+      ><div class="logo">
+        <a  [routerLink]="'/admin'">
+        <img
+          src="assets/images/macro-white.png"
+          width="95px"
+          height="55px"
+        /></a></div
+    ></span>
+    <div class="btn-toolbar pull-right">
+      <div class="tool-button">
+      <button mat-button class="upload mr-2" [routerLink]="'/adminAddNewPost'" >
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
+    </div>
+      <button mat-raised-button (click)="logout()" class="btn power-off mr-2">
+        <mat-icon color="#eee">settings_power</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="container mt-5">
+    <div class="card p-2">
+      <div class="row">
+        <div class="col-6">
+          <h1>1. Upload a Photo</h1>
+            <mat-divider></mat-divider>
+            <br>
+          <div class=" d-flex justify-content-between">
+            <input type="file" name="image" id="image"  value="select" #selectFile 
+            (change)="onFileSelected($event)" [disabled]="isImageSent">
+            <button class="btn-remove-image"[hidden]="!isImageSelected" mat-raised-button color="warn" *ngFor="let file of imagePost.postImages; let i = index" (click)="removeImages(i)"><mat-icon color="#eee">cancel</mat-icon>Remove</button>
+          </div>
+        
+        <div class="mt-1">
+          <div class="row added-image">
+            <mat-card class="preview-photo" *ngFor="let file of imagePost.postImages; let i = index">
+              <mat-card-header>
+              </mat-card-header>
+              <img mat-card-image [src]="file.url">
+            </mat-card>
+          </div>
+        </div>
+      </div>
+        <div class="col-6">
+          <h1>2.Caption the photo</h1>
+            <mat-divider></mat-divider>
+            <br>
+          <form #postForm = "ngForm" (ngSubmit)="addPost(postForm)">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Image Caption</mat-label>
+            <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption" [disabled]="isImageSent"/>
+            <mat-icon matSuffix>crop_original</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Image Description</mat-label>
+              <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription" [disabled]="isImageSent"/>
+              <mat-icon matSuffix>code</mat-icon>
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline" class="w-100"><mat-chip-list aria-label="Fish selection">
+              <mat-chip [(ngModel)]="imagePost.postType" value="Nature">Nature</mat-chip>
+              <mat-chip [(ngModel)]="imagePost.postType" value="Architectural">Architectural</mat-chip>
+              <mat-chip color="accent" [(ngModel)]="imagePost.postType" value="Abstract">Abstract</mat-chip>
+              <mat-chip color="warn" [(ngModel)]="imagePost.postType" value="Portrait">Portrait</mat-chip>
+              <mat-chip color="warn" [(ngModel)]="imagePost.postType" value="Macro">Macro</mat-chip>
+              <mat-chip color="warn" [(ngModel)]="imagePost.postType" value="Other">Other</mat-chip>
+            </mat-chip-list></mat-form-field>
+             -->
+             <!-- <mat-form-field appearance="fill" color="#00C5AB">
+              <mat-label>Select Type of Photography</mat-label>
+              <mat-select [(ngModel)]="selected" [(value)]="selected" [ngModelOptions]="{standalone: true}">
+                <mat-option value="Architectural" id="postType" name="postType">Architectural</mat-option>
+                <mat-option value="Nature" id="postType" name="postType">Nature</mat-option>
+                <mat-option value="Abstract" id="postType" name="postType">Abstract</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+             <!-- <mat-button-toggle-group name="postType" aria-label="Font Style" gutter="10px" >
+              <mat-button-toggle   value="Nature" id="postType" name="postType">Nature</mat-button-toggle>
+              <mat-button-toggle [(ngModel)]="imagePost.postType" value="Architectural" id="postType" name="postType">Architectural</mat-button-toggle>
+              <mat-button-toggle [(ngModel)]="imagePost.postType" value="Abstract" id="postType" name="postType">Abstract</mat-button-toggle>
+              <mat-button-toggle [(ngModel)]="imagePost.postType" value="Portrait" id="postType" name="postType">Portrait</mat-button-toggle>
+              <mat-button-toggle [(ngModel)]="imagePost.postType" value="Macro" id="postType" name="postType">Macro</mat-button-toggle>
+              <mat-button-toggle [(ngModel)]="imagePost.postType" value="Other" id="postType" name="postType">Other</mat-button-toggle>
+            </mat-button-toggle-group> -->
+            <h1>3. Optional: Camera Details</h1>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Camera Model</mat-label>
+              <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera" [disabled]="isImageSent"/>
+              <mat-icon matSuffix>camera_alt</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Camera Lens</mat-label>
+              <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens" [disabled]="isImageSent"/>
+              <mat-icon matSuffix>camera</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Camera Aperture</mat-label>
+              <input maxlength="10" matInput placeholder="Camera Aperture Setting" [(ngModel)]="imagePost.postAperture" name="postAperture" [disabled]="isImageSent"/>
+              <mat-icon matSuffix>center_focus_weak</mat-icon>
+            </mat-form-field>
+          
+            <div align="end">
+            <button mat-stroked-button color="primary" style="margin-right: 3px;" [disabled]="isImageSent">Clear</button>
+            <button mat-stroked-button color="primary" type="submit" [disabled]="isImageSent">Add Image</button>
+          </div>
+          <br>
+          <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+          <mat-spinner [hidden]="!isImageSent"></mat-spinner>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  

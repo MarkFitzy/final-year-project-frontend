@@ -13,8 +13,8 @@ export class PostImageService {
     return this.httpClient.post<ImagePost>("http://localhost:9090/addNewImage", image);
   }
 
-  public getAllPosts() {
-    return this.httpClient.get<ImagePost[]>("http://localhost:9090/getAllPosts");
+  public getAllPosts(searchKeyword: string = "") {
+    return this.httpClient.get<ImagePost[]>("http://localhost:9090/getAllPosts?searchKey="+searchKeyword);
   }
 
   public deletePost(postId: number){

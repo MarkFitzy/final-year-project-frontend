@@ -12,17 +12,15 @@ import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
 
 @Component({
-  selector: 'app-add-new-image',
-  templateUrl: './add-new-image.component.html',
-  styleUrls: ['./add-new-image.component.css'],
+  selector: 'app-admin-add-new-post',
+  templateUrl: './admin-add-new-post.component.html',
+  styleUrls: ['./admin-add-new-post.component.css']
 })
-export class AddNewImageComponent implements OnInit {
+export class AdminAddNewPostComponent implements OnInit {
+
   isUserLoggedOn: boolean | undefined;
-  userNameSubmitted: string | any;
-  userFirstNameSubmitted: string | any;
-  userLastNameSubmitted: string | any;
+  userNameSubmitted: string;
   isImageSelected = false;
-  isFormComplete = false;
   isImageSent = false;
   selected = 'Nature';
   isImageNew = true;
@@ -34,10 +32,10 @@ export class AddNewImageComponent implements OnInit {
     postLens: '',
     postAperture: '',
     postImages: [],
-    userFirstName: '',
-    userLastName: '',
     userName: '',
     postType: this.selected,
+    userFirstName: '',
+    userLastName: '',
   };
 
   constructor(
@@ -51,34 +49,16 @@ export class AddNewImageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn();
     this.sharedService.getUserNameData().subscribe((userNameEntered) => {
-      this.userNameSubmitted = this.userAuthService.getUserNameData();
+      this.userNameSubmitted = userNameEntered;
       console.log('form data ', userNameEntered);
+      this.isLoggedIn();
+      
     });
-    //new
-    this.sharedService
-      .getUserFirstNameData()
-      .subscribe((userFirstNameEntered) => {
-        this.userFirstNameSubmitted =
-          this.userAuthService.getUserFirstNameData();
-        console.log('form data ', userFirstNameEntered);
-      });
-    this.sharedService
-      .getUserFirstNameData()
-      .subscribe((userLastNameEntered) => {
-        this.userLastNameSubmitted = this.userAuthService.getUserLastNameData();
-        console.log('form data ', userLastNameEntered);
-      });
-    //^^^new
     //  this.userNameSubmitted = this.sharedService
     console.log('userNameSubmitted', this.userNameSubmitted);
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     const username = this.userNameSubmitted;
-    //
-    const userlastName = this.userLastNameSubmitted;
-    const userfirstName = this.userFirstNameSubmitted;
-    //
     console.log('username is ', username);
     if (this.imagePost && this.imagePost.postId) {
       this.isImageNew = false;
@@ -89,14 +69,12 @@ export class AddNewImageComponent implements OnInit {
       postDescription: '',
       postCamera: '',
       postLens: '',
+      userFirstName: 'Macro',
+      userLastName: 'Social App',
       postAperture: '',
       postImages: [],
-      userFirstName: userfirstName,
-      userLastName: userlastName,
-      userName: username,
-      postType: '',
-
-      //
+      userName: "Macro",
+      postType: "Announcement",
     };
 
     // this.postForm.get('userName').setValue(this.userNameSubmitted);
@@ -121,23 +99,24 @@ export class AddNewImageComponent implements OnInit {
   }
 
   addPost(postForm: NgForm) {
-    const delay = (ms: any) => new Promise((res) => setTimeout(res, ms));
+    const delay = (ms:any) => new Promise(res => setTimeout(res,ms));
     const postFormData = this.prepareFormData(this.imagePost);
-    try {
-      this.postImageService.addImage(postFormData).subscribe({
-        next: (response: ImagePost) => {
-          postForm.reset();
-        },
-        error: (error: HttpErrorResponse) => {
-          console.log(error);
-        },
-      });
-      delay(1000000);
-    } finally {
+    try{
+    this.postImageService.addImage(postFormData).subscribe({
+      next: (response: ImagePost) => {
+        postForm.reset();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      },
+        });
+      delay(1000000);}
+    finally{
       this.isImageSent = true;
       setTimeout(() => {
-        this.router.navigateByUrl('/homepage');
-      }, 6000);
+    this.router.navigateByUrl('/admin');
+    
+      },6000);
     }
   }
 
@@ -160,30 +139,21 @@ export class AddNewImageComponent implements OnInit {
   onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-      const fileSize = file.size;
-      console.log('FILE SIZE');
-      console.log(fileSize);
-      if (fileSize > 10000000) {
-        alert('File size is to big: ' + fileSize);
-        this.isFormComplete = false;
-        this.removeImages;
-      } else {
-        const fileHandle: FileHandle = {
-          file: file,
-          url: this.sanitizer.bypassSecurityTrustUrl(
-            window.URL.createObjectURL(file)
-          ),
-        };
-        this.imagePost.postImages.push(fileHandle);
-        this.isImageSelected = true;
-        this.isFormComplete = true;
-      }
+      const fileHandle: FileHandle = {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        ),
+      };
+      this.imagePost.postImages.push(fileHandle);
+      this.isImageSelected = true;
     }
   }
 
   removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);
     this.isImageSelected = false;
-    this.isFormComplete = false;
   }
 }
+
+

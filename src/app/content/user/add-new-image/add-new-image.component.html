@@ -28,7 +28,7 @@
           <br>
         <div class=" d-flex justify-content-between">
           <input type="file" name="image" id="image"  value="select" #selectFile 
-          (change)="onFileSelected($event)">
+          (change)="onFileSelected($event)" [disabled]="isImageSent">
           <button class="btn-remove-image"[hidden]="!isImageSelected" mat-raised-button color="warn" *ngFor="let file of imagePost.postImages; let i = index" (click)="removeImages(i)"><mat-icon color="#eee">cancel</mat-icon>Remove</button>
         </div>
       
@@ -49,13 +49,13 @@
         <form #postForm = "ngForm" (ngSubmit)="addPost(postForm)">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Image Caption</mat-label>
-          <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption"/>
+          <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption" [disabled]="isImageSent"/>
           <mat-icon matSuffix>crop_original</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Image Description</mat-label>
-            <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription"/>
+            <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription" [disabled]="isImageSent"/>
             <mat-icon matSuffix>code</mat-icon>
           </mat-form-field>
           <!-- <mat-form-field appearance="outline" class="w-100"><mat-chip-list aria-label="Fish selection">
@@ -88,26 +88,29 @@
           <br>
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Camera Model</mat-label>
-            <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera"/>
+            <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera" [disabled]="isImageSent"/>
             <mat-icon matSuffix>camera_alt</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Camera Lens</mat-label>
-            <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens"/>
+            <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens" [disabled]="isImageSent"/>
             <mat-icon matSuffix>camera</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Camera Aperture</mat-label>
-            <input maxlength="10" matInput placeholder="Camera Aperture Setting" [(ngModel)]="imagePost.postAperture" name="postAperture"/>
+            <input maxlength="10" matInput placeholder="Camera Aperture Setting" [(ngModel)]="imagePost.postAperture" name="postAperture" [disabled]="isImageSent"/>
             <mat-icon matSuffix>center_focus_weak</mat-icon>
           </mat-form-field>
         
           <div align="end">
-          <button mat-stroked-button color="primary" style="margin-right: 3px;">Clear</button>
-          <button mat-stroked-button color="primary" type="submit">Add Image</button>
+          <button mat-stroked-button color="primary" style="margin-right: 3px;" [disabled]="isImageSent">Clear</button>
+          <button mat-stroked-button color="primary" type="submit" [disabled]="isImageSent || !isFormComplete">Add Image</button>
         </div>
+        <br>
+        <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+        <mat-spinner [hidden]="!isImageSent"></mat-spinner>
       </form>
       </div>
       

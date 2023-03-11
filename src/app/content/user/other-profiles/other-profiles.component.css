@@ -1,5 +1,10 @@
 .toolbar {
     background-color: #00C5AB;
+    position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
+  z-index: 1000;
+    
 }
 
 mat-grid-tile {
@@ -13,10 +18,10 @@ mat-grid-tile {
 }
 
 .container {
-    max-width: 900px;
-    max-height: 1400px;
+    max-width: 1200px;
     display: flex;
-    justify-content: space-between;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* mat-card {
@@ -24,16 +29,12 @@ mat-grid-tile {
     border: none;
     box-shadow: none;
 } */
-
-
-
-.image-layout {
-    max-width: 80%;
-    max-height: 70%;
-    margin-left: auto;
-    margin-right: auto;
-
-}
+.rounded-avatar {
+    border-radius: 50%;
+    width: 150px; /* optional: set the width and height of the image */
+    height: 150px;
+    box-shadow: 2px 2px;
+  }
 
 img.image {
     border-radius: 40px 40px 40px 40px;
@@ -42,18 +43,24 @@ img.image {
     -ms-border-radius: 40px 40px 40px 40px;
     -o-border-radius: 40px 40px 40px 40px;
     max-width: 500px;
-    max-height: 500px;
+    max-height: 700px;
+}
+.image {
+    box-shadow: .5px .5px .5px;
 }
 
 .mat-icon {
     vertical-align: middle;
 }
 
-.my-card {
+.profile-card {
+    padding: none !important;
   margin-bottom: 20px;
-  box-sizing: border-box;
-  border: 3px solid transparent;
-  background-clip:padding-box;
+  background-color: none !important;
+  background: none !important;;
+  box-shadow: none !important;
+  border: none !important;
+  /* background-clip:padding-box; */
   border-radius: 25px ;
   -webkit-border-radius: 25px ;
   -moz-border-radius: 25px ;
@@ -63,6 +70,16 @@ img.image {
   
   
 }
+.posts{
+    margin-left: 110px;
+    margin-top: 20px;
+}
+.profile-title {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+}
 
 /* #specs {
     gap: 10px;
@@ -70,18 +87,6 @@ img.image {
     margin-left: 10px;
 } */
 
-.Caption {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-p {
-    text-align: center;
-}
-
-.rating-list li.selected {
-    color: #ffd700;
-}
 
 .col-gap {
     column-gap: 25px;
@@ -99,7 +104,7 @@ p {
 }
 
 .matCardCenter {
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .usernameChip {
@@ -122,7 +127,3 @@ p {
     color:#403d39;
     cursor: pointer;
 }
-
-/* .cameraSpecs {
-    margin-left: 200px;
-} */

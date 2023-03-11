@@ -17,3 +17,8 @@ mat-grid-tile {
     max-height: 700px !important;
 
 }
+
+.mat-dialog-container {
+    background: none !important;
+    box-shadow: none !important;
+}

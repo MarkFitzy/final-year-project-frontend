@@ -14,7 +14,7 @@
 
 .imagePost {
     max-width: 800px;
-    max-height: 900px;
+    max-height: 650px;
 }
 
 .imageCard {
@@ -27,9 +27,13 @@
 }
 
 .Back {
+    color: black;
     display: flex;
     align-items: center;
     cursor: pointer;
+    height: 50px;
+    width: 60px;
+    margin-left: 20px;
 }
 
 .photoOnFocus {

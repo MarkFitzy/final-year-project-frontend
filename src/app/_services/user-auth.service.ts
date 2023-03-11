@@ -13,16 +13,49 @@ export class UserAuthService {
   }
 
   public getRoles(): []{
-    return JSON.parse(localStorage.getItem('roles')||'null'|| '{}');
+    return JSON.parse(localStorage.getItem('roles')!);
   }
 
   public setToken(jwtToken: string) {
-    localStorage.setItem('jwtToken', jwtToken);
+    localStorage.setItem('jwtToken', jwtToken), { withCredentials: true };
   }
 
   public getToken(): string{
-    return (localStorage.getItem('jwtToken')||'null'|| '{}');
+    return  (localStorage.getItem('jwtToken')!);
   }
+
+  setUserNameData(userName: any) {
+    localStorage.setItem('userName', userName)
+ }
+
+ getUserNameData() {
+    return (localStorage.getItem('userName'));
+ }
+
+ setUserFirstNameData(userFirstName: any) {
+  localStorage.setItem('userFirstName', userFirstName)
+
+ }
+ getUserFirstNameData() {
+  return (localStorage.getItem('userFirstName'));
+}
+
+ setUserLastNameData(userLastName: any) {
+  localStorage.setItem('userLastName', userLastName)
+
+ }
+ getUserLastNameData() {
+  return (localStorage.getItem('userLastName'));
+}
+
+setUserProfileNameData(userProfile: any) {
+  localStorage.setItem('userProfile', userProfile)
+
+ }
+ getUserProfileNameData() {
+  return (localStorage.getItem('userProfile'));
+}
+
 
   public clear() {
     localStorage.clear();

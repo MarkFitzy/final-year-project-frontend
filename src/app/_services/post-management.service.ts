@@ -34,7 +34,10 @@ export class PostManagementService implements Resolve<ImagePost>{
       postLens: "",
       postAperture: "",
       postType: "",
+      userName: "",
       postImages: [],
+      userFirstName: "",
+      userLastName: "",
 
     }
   }

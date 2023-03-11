@@ -54,3 +54,8 @@ body, html {
 .tool-button{
   margin-right: 25px;
 }
+
+.mat-dialog-container {
+  background: none !important;
+  box-shadow: none !important;
+}
