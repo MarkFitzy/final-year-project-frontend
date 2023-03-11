@@ -1,0 +1,51 @@
+<mat-toolbar class="toolbar d-flex justify-content-between">
+  <span><div class="logo"><a [routerLink]="'/landing'"><img src="assets/images/macro-white.png" width="95px" height="55px"></a> </div></span>
+  <div class="login-icon" gutter="20px"><mat-icon>account_circle</mat-icon>Login</div>
+  <div class="btn-toolbar pull-right">
+   
+    
+    <span><a [routerLink]="'/login'"><mat-icon class="loginIcon">account_circle</mat-icon></a></span>
+  </div>
+  </mat-toolbar>
+<!-- <div class = container mt-5>
+        <div class="card" style="padding: 20px;">
+            <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)">
+              <input ngModel type="text"  name="userName" placeholder="Email"  id="userName" class="form-control mb-3" >
+              <input ngModel type="password"  name="userPassword" placeholder="Password"  id="userPassword" class="form-control mb-3">
+              <button class ="signup-button" type="submit" value="Login" mat-button>Submit</button>
+            </form></div>
+  </div> -->
+
+  <div class="container mt-5 ">
+    <div class="card p-2">
+      <div class="row">
+        <div class="col-6">
+          <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)">
+          <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
+            <mat-label>User Name</mat-label>
+            <input matInput ngModel type="text"  name="userName" placeholder="user name"  id="userName" class="form-control mb-3" >
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
+              <mat-label>Password</mat-label>
+              <!-- <input matInput ngModel type="password"  name="userPassword" placeholder="Please enter your password"  id="userPassword" class="form-control mb-3">
+              <mat-icon matSuffix>lock</mat-icon> -->
+              <input matInput placeholder="Please enter your password" ngModel [type]="isHidden ? 'password' : 'text'"  name="userPassword"  id="userPassword" autocomplete="disabled" class="form-control mb-3">
+            <mat-icon class="hidePassword" (click)="isHidden = !isHidden" matSuffix>{{isHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+          
+            <div class="d-flex justify-content-between">
+              <button [routerLink]="'/signup'" mat-button color="primary">Don't have an Account?</button>
+              <button mat-stroked-button color="primary" type="submit">Submit</button>
+          </div>
+        </form>
+        </div>
+        <div class="col-6">
+          <div class="logincamera d-flex justify-content-center">
+          <img src="assets/images/logincamera.png" id="logincamera">
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

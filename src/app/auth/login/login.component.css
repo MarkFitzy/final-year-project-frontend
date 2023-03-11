@@ -1,0 +1,22 @@
+.toolbar{
+    background-color: #00C5AB;
+}
+.login{
+    color: azure;
+}
+
+.login-icon {
+    color: #ffff;
+    display: flex;
+    align-items: center;
+  }
+
+  #logincamera {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hidePassword:hover{
+    cursor: pointer;
+  }
+  

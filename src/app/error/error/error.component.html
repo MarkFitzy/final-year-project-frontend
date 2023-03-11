@@ -1,0 +1,24 @@
+<div class="landing-page ">
+    <mat-toolbar class="toolbar d-flex justify-content-between">
+      <span><a [routerLink]="'/landing'"><div class="logo"> <img src="assets/images/macro-white.png" width="95px" height="55px"></div></a></span>
+      <span><a [routerLink]="'/login'"><mat-icon class="loginIcon">account_circle</mat-icon></a></span>
+    </mat-toolbar>
+    <div class="container">
+      
+      <div class="header-area">
+      </div>
+      <div class="info mt-7">
+        <h1><b>OOPS- Please Create an account</b></h1>
+        <h3>Macro is a photography oriented social media site<br>You must have an account to view images on this site<br></h3>
+        <h3>Log in or signup to continue</h3>
+        <div class="buttons">
+        <button class ="signup-button" [routerLink]="'/signup'" mat-raised-button>Sign up</button>
+        <button class ="login-button" [routerLink]="'/login'" mat-button> Log in</button>
+      </div>
+      </div>
+      <div class="image mt-5">
+        <img src="assets/images/errorcop.png" id="error" alt="Alisson the Cop">
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    </div>

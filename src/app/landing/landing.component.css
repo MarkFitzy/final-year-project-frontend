@@ -1,0 +1,156 @@
+
+
+
+
+/* Start Landing Page */
+
+.landing-page {
+    position: relative;
+    background-color: #00C5AB;
+    height: 100%;
+    width: 100vw;
+  height: 100vh;
+}
+
+.landing-page .header-area {
+    display: flex;
+    padding: 25px 0 0;
+    position: relative;
+}
+
+.landing-page .header-area .logo {
+    margin-top: 0px;
+}
+
+.logo {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.landing-page .header-area .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.landing-page .header-area .links li {
+    margin-left: 30px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.landing-page .header-area .links li:last-child {
+    border: 0;
+    border-radius: 20px;
+    padding: 10px 18px;
+    color: #FFF;
+}
+
+.landing-page .info {
+    width: 70%;
+    float: left;
+    margin-top: 130px;
+}
+
+.landing-page .info h1 {
+    font-size: 52px;
+    margin: 0 0 20px;
+    line-height: 1.4;
+    color: #FFF;
+}
+
+.landing-page .info p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #FFF;
+}
+
+.landing-page .signup-button {
+    border: 0;
+    width: 130px;
+    border-radius: 29px;
+    padding: 12px 30px;
+    margin-top: 80px;
+    cursor: pointer;
+    background-color: #FFF !important;
+    color: #00C5AB;
+    -webkit-border-radius: 29px;
+    -moz-border-radius: 29px;
+    -ms-border-radius: 29px;
+    -o-border-radius: 29px;
+}
+
+.landing-page .login-button {
+    border: 0;
+    width: 120px;
+    border-radius: 29px;
+    padding: 12px 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    color: #FFF;
+    -webkit-border-radius: 29px;
+    -moz-border-radius: 29px;
+    -ms-border-radius: 29px;
+    -o-border-radius: 29px;
+}
+
+.buttons {
+    display: inline-block;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+.text-link {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7px;
+}
+
+/* .landing-page .image {
+    width: 550px;
+    float: right;
+}
+
+.landing-page .image img {
+    
+} */
+
+#camera {
+    width: 550px;
+    margin-top: 50px;
+    max-width: 90%;
+    
+    display: block;
+    /* margin-top: -90px; */
+}
+
+.clearfix {
+    clear: both;
+}
+.toolbar{
+    background-color: #00C5AB;
+}
+.loginIcon{
+    color: azure;
+    /*height: 60px !important;
+    width: 60px !important;
+    */display: flex;
+    align-items: center;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+}
+
+/* End Landing Page */

@@ -1,0 +1,71 @@
+<!-- <mat-toolbar class="toolbar d-flex justify-content-between">
+  <span><div class="logo"><a [routerLink]="'/login'"><img src="assets/images/macro-white.png" width="95px" height="55px"></a> </div></span>
+  <span><a [routerLink]="'/login'"><mat-icon class="loginIcon">account_circle</mat-icon></a></span>
+</mat-toolbar> -->
+<mat-toolbar class="toolbar d-flex justify-content-between">
+  <span><div class="logo"><a [routerLink]="'/landing'"><img src="assets/images/macro-white.png" width="95px" height="55px"></a> </div></span>
+  <div class="signup-icon" gutter="20px"><mat-icon>assignment_ind</mat-icon>Signup</div>
+  <div class="btn-toolbar pull-right">
+   
+    
+    <span><a [routerLink]="'/login'"><mat-icon class="loginIcon">account_circle</mat-icon></a></span>
+  </div>
+  </mat-toolbar>
+<!-- <mat-card>
+  <mat-card-content>
+<div class = container mt-5> -->
+  <!-- <div class="card" style="padding: 20px;"> -->
+  <!-- <form #SignInForm="ngForm" (ngSubmit)="signup(SignInForm)">
+              <input ngModel type="text"  name="userName" placeholder="Email"  id="userName" class="form-control mb-3" >
+              <input ngModel type="text"  name="userFirstName" placeholder="First Name"  id="userFirstName" class="form-control mb-3">
+              <input ngModel type="text"  name="userLastName" placeholder="Last Name"  id="userLastName" class="form-control mb-3">
+              <input ngModel type="password"  name="userPassword" placeholder="Password"  id="userPassword" class="form-control mb-3">
+              <button class ="signup-button" type="submit" value="Login" mat-button>Submit</button>
+  </form></div> -->
+
+<div class="container mt-5">
+  <div class="card p-2">
+    <div class="row">
+      <div class="col-6">
+        <form #SignInForm="ngForm" (ngSubmit)="signup(SignInForm)">
+        <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
+          <mat-label>User Name</mat-label>
+          <input matInput ngModel type="text"  name="userName" placeholder="user name"  id="userName" autocomplete="disabled">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
+            <mat-label>First Name</mat-label>
+            <input matInput ngModel type="text"  name="userFirstName" placeholder="First Name"  id="userFirstName" autocomplete="disabled">
+            <mat-icon matSuffix>looks_one</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
+            <mat-label>Last Name</mat-label>
+            <input matInput ngModel type="text"  name="userLastName" placeholder="Last Name"  id="userLastName" autocomplete="disabled">
+            <mat-icon matSuffix>looks_two</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" ngModel [type]="isHidden ? 'password' : 'text'"  name="userPassword"  id="userPassword" autocomplete="disabled">
+            <mat-icon class="hidePassword" (click)="isHidden = !isHidden" matSuffix>{{isHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+          </mat-form-field>
+        
+          <div class="d-flex justify-content-between">
+          <button [routerLink]="'/login'" mat-button color="primary">Already have an account?</button>
+          <button mat-stroked-button color="primary" type="submit">Submit</button>
+        </div>
+        
+      </form>
+      
+      </div>
+      <div class="col-6">
+        <div class="d-flex justify-content-center">
+        <img  src="assets/images/signupcamera.png" id="signupcamera">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
