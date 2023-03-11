@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../_model/user';
 import { UserAuthService } from './user-auth.service';
 
 @Injectable({
@@ -13,6 +14,10 @@ export class UserService {
 
   public signup(signupData: any){
     return this.http.post(this.PATH_OF_API + "/registerNewUser", signupData);
+  }
+
+  public getUser(searchKeyword: string = "") {
+    return this.http.get<User[]>(this.PATH_OF_API + "/getUser?searchKey="+searchKeyword);
   }
 
   public login(loginData: any){{

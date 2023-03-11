@@ -22,6 +22,7 @@ export class PostOnFocusComponent implements OnInit {
     private imageProcessingService: ImageProcessingService) { }
 
   ngOnInit(): void {
+    
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     console.log(this.imagePost);
   }
