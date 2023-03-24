@@ -27,7 +27,7 @@
     "exifreader": "^4.9.1",
     "jquery": "^3.6.3",
     "material": "^0.5.2",
-    "ngx-bootstrap": "^0.0.1",
+    "ngx-bootstrap": "^10.2.0",
     "ngx-image-compress": "^13.1.16",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
