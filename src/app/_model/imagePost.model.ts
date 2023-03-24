@@ -14,3 +14,8 @@ export interface ImagePost {
     userName: string,
     
 }
+
+export interface Comment {
+    id?: number;
+    commentText: string;
+  }

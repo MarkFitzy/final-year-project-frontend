@@ -10,6 +10,7 @@ import { PostImageService } from 'src/app/_services/post-imageservice';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
   selector: 'app-add-new-image',
@@ -47,7 +48,8 @@ export class AddNewImageComponent implements OnInit {
     private postImageService: PostImageService,
     private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private imageCompress: NgxImageCompressService
   ) {}
 
   ngOnInit(): void {
@@ -107,6 +109,18 @@ export class AddNewImageComponent implements OnInit {
 
     return this.userAuthService.isLoggedIn();
   }
+  private dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const intArray = new Uint8Array(arrayBuffer);
+  
+    for (let i = 0; i < byteString.length; i++) {
+      intArray[i] = byteString.charCodeAt(i);
+    }
+  
+    return new Blob([arrayBuffer], { type: mimeString });
+  }
 
   public logout() {
     this.userAuthService.isUserLoggedIn = false;
@@ -157,29 +171,39 @@ export class AddNewImageComponent implements OnInit {
     }
     return formData;
   }
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
       const fileSize = file.size;
       console.log('FILE SIZE');
       console.log(fileSize);
-      if (fileSize > 10000000) {
-        alert('File size is to big: ' + fileSize);
-        this.isFormComplete = false;
-        this.removeImages;
-      } else {
-        const fileHandle: FileHandle = {
-          file: file,
-          url: this.sanitizer.bypassSecurityTrustUrl(
-            window.URL.createObjectURL(file)
-          ),
+      // if (fileSize > 10000000) {
+      //   alert('File size is too big: ' + fileSize);
+      //   // this.isFormComplete = false;
+      //   // this.removeImages;
+      // } else {
+        const reader = new FileReader();
+        reader.onload = async (fileReaderEvent) => {
+          if (fileReaderEvent.target) {
+            const image = fileReaderEvent.target.result as string;
+            const orientation = await this.imageCompress.getOrientation(file);
+            this.imageCompress.compressFile(image, orientation, 50, 50).then((compressedImage) => {
+              const compressedImageBlob = this.dataURItoBlob(compressedImage);
+              const compressedFile = new File([compressedImageBlob], file.name, { type: compressedImageBlob.type });
+              const fileHandle: FileHandle = {
+                file: compressedFile,
+                url: this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(compressedFile)),
+              };
+              this.imagePost.postImages.push(fileHandle);
+              this.isImageSelected = true;
+              this.isFormComplete = true;
+            });
+          }
         };
-        this.imagePost.postImages.push(fileHandle);
-        this.isImageSelected = true;
-        this.isFormComplete = true;
+        reader.readAsDataURL(file);
       }
     }
-  }
+
 
   removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);

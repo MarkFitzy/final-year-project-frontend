@@ -19,14 +19,12 @@ import { MatChipEvent,MatChipInputEvent } from '@angular/material/chips';
 })
 export class HomepageComponent implements OnInit {
   control = new FormControl('');
-  streets: string[] = ['MarkG', 'John12', 'ShaneMcN', 'Christo'];
-  filteredStreets: Observable<string[]> | undefined;
-  //delete above
   isUserLoggedOn: boolean | undefined;
   postDetails : [] | any;
   profileSelected: string;
   usernameInput: string = "";
   myFormControl = new FormControl("");
+  isSearchOpen = false;
 
   constructor(
     private userAuthService: UserAuthService,
@@ -81,6 +79,7 @@ export class HomepageComponent implements OnInit {
         next: (response: ImagePost[]) => {
           console.log(response);
           this.postDetails = response;
+          this.postDetails.reverse();
         },
         error: (error: HttpErrorResponse) => {
           console.log(error);
@@ -98,5 +97,9 @@ export class HomepageComponent implements OnInit {
 
   postOnFocus(postId : any) {
     this.router.navigate(['/post-on-focus', {postId : postId}]);
+  }
+
+  toggleSearch(): void {
+    this.isSearchOpen = !this.isSearchOpen;
   }
 }

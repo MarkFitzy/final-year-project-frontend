@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   isUserLoggedOn : boolean | undefined;
   userNameEntered: any;
   isHidden = true;
+  isPasswordOrEmailInValid = false;
 
   ngOnInit() {
   }
@@ -29,12 +30,9 @@ export class LoginComponent implements OnInit {
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
         this.userAuthService.setUserNameData(response.user.userName);
-        console.log("USERNAMEDATA");
         console.log(this.userAuthService.getUserNameData())
         this.userNameEntered = response.user.userName;
         this.sharedService.setUserNameData(this.userNameEntered);
-        console.log("JWT TOKEN -->" + this.userAuthService.setToken(response.jwtToken));
-        console.log("USER ROLE -->" + this.userAuthService.setRoles(response.user.role));
 
         const role = response.user.role[0].roleName;
         if (role == 'Admin') {
@@ -44,7 +42,7 @@ export class LoginComponent implements OnInit {
         }
       },
       error: (error) => {
-        console.log(error);
+        this.isPasswordOrEmailInValid = true;
       },
     });
   }
@@ -59,7 +57,6 @@ export class LoginComponent implements OnInit {
     this.userAuthService.isUserLoggedIn = false;
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
     this.userAuthService.clear();
-    console.log('logged out');
     this.router.navigate(['/landing']);
   }
 

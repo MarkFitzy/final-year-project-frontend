@@ -31,4 +31,7 @@
 .hidePassword:hover{
   cursor: pointer;
 }
+.signup-page {
+  background-color: #FAFAFA !important;
+}
 

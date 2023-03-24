@@ -25,35 +25,59 @@
       /></a></div
   ></span>
   <form class="example-form">
-    <input
-      #searchKeyword
-      (keyup)="searchByKeyword(searchKeyword.value)"
-      type="text"
-      name="searchKey"
-      id="searchKey"
-      placeholder="Search for a user"
-      [formControl]="control"
-      class="example-input"
-    />
-  </form>
-  <div class="btn-toolbar pull-right">
-    
-    <div class="toolbar d-flex justify-content-center">
-    <div class="col-4 tool-button">
-      <button mat-button class="upload" [routerLink]="'/addNewImage'">
-        <mat-icon>add_a_photo</mat-icon>
+    <div class="search-container">
+      <button mat-icon-button class="search-button" [hidden]="isSearchOpen">
+        <mat-icon>search</mat-icon>
+      </button>
+      <input
+        #searchKeyword
+        (keyup)="searchByKeyword(searchKeyword.value); isSearchOpen = true"
+        type="text"
+        name="searchKey"
+        id="searchKey"
+        placeholder="Search for a user"
+        [formControl]="control"
+        class="example-input"
+        [ngClass]="{'search-open': isSearchOpen}"
+      />
+      <button
+        mat-icon-button
+        class="cancel-button"
+        *ngIf="isSearchOpen"
+        (click)="isSearchOpen = false; control.setValue(''); searchByKeyword('')"
+      >
+        <mat-icon>clear</mat-icon>
       </button>
     </div>
-    <div class="col-4 profile-button"><mat-icon color="#eee" [routerLink]="'/profile'">account_circle</mat-icon></div>
-    <button mat-raised-button (click)="logout()" class="col-4  btn power-off">
-      <mat-icon color="#eee">settings_power</mat-icon>
+  </form>
+  <div class="btn-toolbar pull-right">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="bMenu">menu</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="'/addNewImage'">
+        <mat-icon>add_a_photo</mat-icon> Add Photo
+      </button>
+      <button mat-menu-item [routerLink]="'/profile'">
+        <mat-icon>account_circle</mat-icon> Account
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>settings_power</mat-icon> Logoff
+      </button>
+    </mat-menu>
   </div>
-</div>
 </mat-toolbar>
+<ng-template #noPosts>
+  <div class="d-flex justify-content-center mt-5 text-center">
+    <h2 class="noPost">Be the first to add a post!</h2>
+  </div>
+</ng-template>
 <div class="container mt-5" id="mycontainer" gutter="25px">
   <div class="matCardCenter"></div>
   <div class="row col-gap">
+    
+    
+    <ng-container *ngIf="postDetails?.length > 0; else noPosts">
     <mat-card
       class="my-card col-5 align-self-center"
       *ngFor="let p of postDetails"
@@ -109,5 +133,6 @@ Aperture: {{ p.postAperture }}"
         <mat-card-actions> </mat-card-actions>
       </span>
     </mat-card>
+  </ng-container>
   </div>
 </div>

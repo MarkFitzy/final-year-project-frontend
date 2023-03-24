@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -18,6 +18,7 @@ import { map } from 'rxjs/operators';
 })
 export class AdminComponent implements OnInit {
   postDetails: ImagePost[] = [];
+  hideColumns = false;
   displayedColumns: string[] = [
     'ID',
     'Image',
@@ -46,6 +47,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPosts();
     this.isLoggedIn();
+    this.hideColumns = window.innerWidth < 900; 
   }
 
   public isLoggedIn() {
