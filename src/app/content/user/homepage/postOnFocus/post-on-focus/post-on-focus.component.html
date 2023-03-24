@@ -9,14 +9,20 @@
         /></a></div
     ></span>
     <div class="btn-toolbar pull-right">
-      <div class="tool-button">
-      <button mat-button class="upload mr-2" [routerLink]="'/addNewImage'" >
-        <mat-icon>add_a_photo</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="bMenu">menu</mat-icon>
       </button>
-    </div>
-      <button mat-raised-button (click)="logout()" class="btn power-off mr-2">
-        <mat-icon color="#eee">settings_power</mat-icon>
-      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/addNewImage'">
+          <mat-icon>add_a_photo</mat-icon> Add Photo
+        </button>
+        <button mat-menu-item [routerLink]="'/profile'">
+          <mat-icon>account_circle</mat-icon> Account
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>settings_power</mat-icon> Logoff
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar>
   <div class="Back mt-3" [routerLink]="'/homepage'">
@@ -38,6 +44,7 @@
               <mat-card>
                 <mat-card-content><div class="mt-3">
                   <h2>{{imagePost?.postCaption}}</h2>
+                  <h1>{{imagePost?.postId}}</h1>
               </div>
               <div class="mt-3">
                   <h4>{{imagePost?.postDescription}}</h4>
@@ -48,6 +55,20 @@
               <div class="mt-3">
                   <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span><span class="cameraTypes d-flex justify-content-center"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span><span class="cameraTypes d-flex justify-content-center"><mat-icon >center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
               </div></mat-card-content>
+              <!-- <div class="comments-section">
+                <h3>Comments</h3>
+              
+                <div class="comment" *ngFor="let comment of comments">
+                  <mat-divider></mat-divider>
+                  <p>{{ comment.content }}</p>
+                </div>
+              
+                <div class="add-comment">
+                  <h4>Add a comment</h4>
+                  <textarea [(ngModel)]="newComment" placeholder="Write your comment here..."></textarea>
+                  <button (click)="addComment()">Submit</button>
+                </div>
+              </div> -->
               </mat-card>
                 
             </div>

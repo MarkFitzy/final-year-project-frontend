@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxImageCompressService } from 'ngx-image-compress';
 import { delay } from 'rxjs';
 import { FileHandle } from 'src/app/_model/file-handle.model';
 import { ImagePost } from 'src/app/_model/imagePost.model';
@@ -22,6 +23,7 @@ export class AdminAddNewPostComponent implements OnInit {
   userNameSubmitted: string;
   isImageSelected = false;
   isImageSent = false;
+  isFormComplete = false;
   selected = 'Nature';
   isImageNew = true;
   imagePost: ImagePost = {
@@ -45,7 +47,8 @@ export class AdminAddNewPostComponent implements OnInit {
     private postImageService: PostImageService,
     private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private imageCompress: NgxImageCompressService,
   ) {}
 
   ngOnInit(): void {
@@ -84,6 +87,18 @@ export class AdminAddNewPostComponent implements OnInit {
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
 
     return this.userAuthService.isLoggedIn();
+  }
+  private dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const intArray = new Uint8Array(arrayBuffer);
+  
+    for (let i = 0; i < byteString.length; i++) {
+      intArray[i] = byteString.charCodeAt(i);
+    }
+  
+    return new Blob([arrayBuffer], { type: mimeString });
   }
 
   public logout() {
@@ -136,19 +151,38 @@ export class AdminAddNewPostComponent implements OnInit {
     }
     return formData;
   }
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-      const fileHandle: FileHandle = {
-        file: file,
-        url: this.sanitizer.bypassSecurityTrustUrl(
-          window.URL.createObjectURL(file)
-        ),
-      };
-      this.imagePost.postImages.push(fileHandle);
-      this.isImageSelected = true;
+      const fileSize = file.size;
+      console.log('FILE SIZE');
+      console.log(fileSize);
+      // if (fileSize > 10000000) {
+      //   alert('File size is too big: ' + fileSize);
+      //   // this.isFormComplete = false;
+      //   // this.removeImages;
+      // } else {
+        const reader = new FileReader();
+        reader.onload = async (fileReaderEvent) => {
+          if (fileReaderEvent.target) {
+            const image = fileReaderEvent.target.result as string;
+            const orientation = await this.imageCompress.getOrientation(file);
+            this.imageCompress.compressFile(image, orientation, 50, 50).then((compressedImage) => {
+              const compressedImageBlob = this.dataURItoBlob(compressedImage);
+              const compressedFile = new File([compressedImageBlob], file.name, { type: compressedImageBlob.type });
+              const fileHandle: FileHandle = {
+                file: compressedFile,
+                url: this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(compressedFile)),
+              };
+              this.imagePost.postImages.push(fileHandle);
+              this.isImageSelected = true;
+              this.isFormComplete = true;
+            });
+          }
+        };
+        reader.readAsDataURL(file);
+      }
     }
-  }
 
   removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);

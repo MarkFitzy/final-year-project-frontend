@@ -15,6 +15,7 @@ export class PostOnFocusComponent implements OnInit {
 
   isUserLoggedOn: boolean | undefined;
   imagePost: ImagePost | undefined;
+  newComment: string = '';
   constructor(private activatedRoute: ActivatedRoute, private userAuthService: UserAuthService,
     private router: Router,
     public userService: UserService,
@@ -22,7 +23,6 @@ export class PostOnFocusComponent implements OnInit {
     private imageProcessingService: ImageProcessingService) { }
 
   ngOnInit(): void {
-    
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     console.log(this.imagePost);
   }
@@ -34,5 +34,6 @@ export class PostOnFocusComponent implements OnInit {
     console.log('logged out');
     this.router.navigate(['/landing']);
   }
+  
 
 }

@@ -19,4 +19,14 @@
   .hidePassword:hover{
     cursor: pointer;
   }
+  .error-box {
+    background-color: #ffe3e3;
+    border: 1px solid #f44336;
+    color: #f44336;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
   
+  .error-message {
+    margin: 0;
+  }

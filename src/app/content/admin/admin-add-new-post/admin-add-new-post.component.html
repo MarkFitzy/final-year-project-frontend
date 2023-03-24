@@ -9,14 +9,17 @@
         /></a></div
     ></span>
     <div class="btn-toolbar pull-right">
-      <div class="tool-button">
-      <button mat-button class="upload mr-2" [routerLink]="'/adminAddNewPost'" >
-        <mat-icon>add_a_photo</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="bMenu">menu</mat-icon>
       </button>
-    </div>
-      <button mat-raised-button (click)="logout()" class="btn power-off mr-2">
-        <mat-icon color="#eee">settings_power</mat-icon>
-      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/adminAddNewPost'">
+          <mat-icon>add_a_photo</mat-icon> Add Photo
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>settings_power</mat-icon> Logoff
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar>
   <div class="container mt-5">
@@ -49,13 +52,13 @@
           <form #postForm = "ngForm" (ngSubmit)="addPost(postForm)">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Image Caption</mat-label>
-            <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption" [disabled]="isImageSent"/>
+            <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption" [disabled]="isImageSent" minlength="3" required/>
             <mat-icon matSuffix>crop_original</mat-icon>
           </mat-form-field>
   
           <mat-form-field appearance="outline" class="w-100">
               <mat-label>Image Description</mat-label>
-              <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription" [disabled]="isImageSent"/>
+              <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription" [disabled]="isImageSent" minlength="3" required/>
               <mat-icon matSuffix>code</mat-icon>
             </mat-form-field>
             <!-- <mat-form-field appearance="outline" class="w-100"><mat-chip-list aria-label="Fish selection">
@@ -88,25 +91,25 @@
             <br>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Camera Model</mat-label>
-              <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera" [disabled]="isImageSent"/>
+              <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera" [disabled]="isImageSent" minlength="3" required/>
               <mat-icon matSuffix>camera_alt</mat-icon>
             </mat-form-field>
   
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Camera Lens</mat-label>
-              <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens" [disabled]="isImageSent"/>
+              <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens" [disabled]="isImageSent" minlength="3" required/>
               <mat-icon matSuffix>camera</mat-icon>
             </mat-form-field>
   
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Camera Aperture</mat-label>
-              <input maxlength="10" matInput placeholder="Camera Aperture Setting" [(ngModel)]="imagePost.postAperture" name="postAperture" [disabled]="isImageSent"/>
+              <input maxlength="10" matInput placeholder="Camera Aperture Setting" [(ngModel)]="imagePost.postAperture" name="postAperture" [disabled]="isImageSent" minlength="3" required/>
               <mat-icon matSuffix>center_focus_weak</mat-icon>
             </mat-form-field>
           
             <div align="end">
             <button mat-stroked-button color="primary" style="margin-right: 3px;" [disabled]="isImageSent">Clear</button>
-            <button mat-stroked-button color="primary" type="submit" [disabled]="isImageSent">Add Image</button>
+            <button mat-stroked-button color="primary" type="submit" [disabled]="isImageSent || !isFormComplete || postForm.invalid">Add Image</button>
           </div>
           <br>
           <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->

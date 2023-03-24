@@ -43,8 +43,7 @@ import { UserService } from './_services/user.service';
 import { AdminAddNewPostComponent } from './content/admin/admin-add-new-post/admin-add-new-post.component';
 import { ProfileComponent } from './content/user/profile/profile.component';
 import { OtherProfilesComponent } from './content/user/other-profiles/other-profiles.component';
-import { CommentService } from './_services/comment.service';
-
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +87,7 @@ import { CommentService } from './_services/comment.service';
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    MatMenuModule,
   ],
   exports: [
     BrowserModule,
@@ -133,7 +133,6 @@ export class AppModule {
     private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
     private sharedService: SharedService,
-    private  commentService: CommentService,
   ) {}
 
   ngOnInit(): void {

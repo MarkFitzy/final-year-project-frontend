@@ -101,6 +101,7 @@ export class ProfileComponent implements OnInit {
         next: (response: ImagePost[]) => {
           console.log(response);
           this.postDetails = response;
+          this.postDetails.reverse();
           this.numberOfPosts= response.length;
           this.userFirstNameSubmitted = this.postDetails.userFirstName;
           this.userFirstNameSubmitted = this.postDetails.userLastName;
