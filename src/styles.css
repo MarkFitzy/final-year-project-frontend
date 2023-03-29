@@ -10,7 +10,7 @@ body, html {
 }
 
 /* .container{
-  
+
   max-height: 95vh;
 } */
 .logo {
@@ -66,9 +66,16 @@ body, html {
 position: -webkit-sticky !important;
 top: 0 !important; /* required */
 z-index: 1000 !important;
-  
+
 }
 
 .bMenu{
   color: #FAFAFA !important;
+}
+
+.sendComment {
+  color: #00C5AB;
+}
+.sendComment:disabled {
+  color: #e0e1dd !important;
 }

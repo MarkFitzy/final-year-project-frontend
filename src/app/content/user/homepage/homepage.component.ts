@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatChipEvent,MatChipInputEvent } from '@angular/material/chips';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 
 @Component({
@@ -25,18 +26,24 @@ export class HomepageComponent implements OnInit {
   usernameInput: string = "";
   myFormControl = new FormControl("");
   isSearchOpen = false;
+  isMobile: boolean = false;
 
   constructor(
     private userAuthService: UserAuthService,
     private router: Router,
     public userService: UserService,
     private imagePostService: PostImageService,
-    private imageProcessingService: ImageProcessingService
+    private imageProcessingService: ImageProcessingService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
+    this.breakpointObserver
+    .observe(['(max-width: 840px)'])
+    .subscribe((state: BreakpointState) => {
+      this.isMobile = state.matches;
+    });
     this.userAuthService.getToken();
-    console.log(this.userAuthService.getToken());
     this.isLoggedIn();
     this.getAllPosts();}
   public isLoggedIn() {
@@ -44,9 +51,9 @@ export class HomepageComponent implements OnInit {
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
 
     return this.userAuthService.isLoggedIn();
-    
+
   }
-  
+
 
   public logout() {
     this.userAuthService.isUserLoggedIn = false;
@@ -60,7 +67,6 @@ export class HomepageComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
   searchByKeyword(searchKeyword: any) {
-    console.log(searchKeyword); 
     this.postDetails = [];
     this.getAllPosts(searchKeyword);
   }
@@ -77,7 +83,6 @@ export class HomepageComponent implements OnInit {
       )
       .subscribe({
         next: (response: ImagePost[]) => {
-          console.log(response);
           this.postDetails = response;
           this.postDetails.reverse();
         },
@@ -88,9 +93,8 @@ export class HomepageComponent implements OnInit {
   }
 
   onSelectedProfile(event: MouseEvent){
-   
+
     this.usernameInput = (event.target as HTMLDivElement).innerText;
-    console.log(this.usernameInput);
     this.userAuthService.setUserProfileNameData(this.usernameInput);
     this.router.navigate(['/otherProfiles']);
   }

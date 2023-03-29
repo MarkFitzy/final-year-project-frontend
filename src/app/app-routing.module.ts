@@ -13,6 +13,7 @@ import { ErrorComponent } from './error/error/error.component';
 import { AdminAddNewPostComponent } from './content/admin/admin-add-new-post/admin-add-new-post.component';
 import { ProfileComponent } from './content/user/profile/profile.component';
 import { OtherProfilesComponent } from './content/user/other-profiles/other-profiles.component';
+import { AdminPostOnFocusComponent } from './content/admin/admin-post-on-focus/admin-post-on-focus.component';
 
 
 const routes: Routes = [
@@ -28,8 +29,8 @@ const routes: Routes = [
   { path: 'adminAddNewPost', component: AdminAddNewPostComponent, resolve: {postManager: PostManagementService}},
   { path: 'profile', component: ProfileComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['User']}},
   { path: 'otherProfiles', component: OtherProfilesComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['User']}},
+  { path: 'admin-post-on-focus', component: AdminPostOnFocusComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['Admin']}},
 ];
-// , canActivate: [AuthGuard], data:{roles:['Admin', 'User']} 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
     'Aperture Setting',
     'User Name',
     'Delete',
-    
+
   ];
 
   constructor(
@@ -47,7 +47,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPosts();
     this.isLoggedIn();
-    this.hideColumns = window.innerWidth < 900; 
+    this.hideColumns = window.innerWidth < 900;
   }
 
   public isLoggedIn() {
@@ -81,7 +81,6 @@ export class AdminComponent implements OnInit {
       )
       .subscribe({
         next: (response: ImagePost[]) => {
-          console.log(response);
           this.postDetails = response;
         },
         error: (error: HttpErrorResponse) => {
@@ -109,6 +108,10 @@ export class AdminComponent implements OnInit {
       height: '500px',
       width: '800px',
     });
-    console.log(imagePost);
+  }
+
+  postOnFocus(postId : any) {
+    console.log(postId);
+    this.router.navigate(['/admin-post-on-focus', {postId : postId}]);
   }
 }

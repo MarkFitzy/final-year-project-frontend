@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-add-new-image',
@@ -27,6 +28,7 @@ export class AddNewImageComponent implements OnInit {
   isImageSent = false;
   selected = 'Nature';
   isImageNew = true;
+  isMobile: boolean = false;
   imagePost: ImagePost = {
     postId: 0,
     postCaption: '',
@@ -49,14 +51,19 @@ export class AddNewImageComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
     private sharedService: SharedService,
-    private imageCompress: NgxImageCompressService
+    private imageCompress: NgxImageCompressService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
+    this.breakpointObserver
+    .observe(['(max-width: 600px)'])
+    .subscribe((state: BreakpointState) => {
+      this.isMobile = state.matches;
+    });
     this.isLoggedIn();
     this.sharedService.getUserNameData().subscribe((userNameEntered) => {
       this.userNameSubmitted = this.userAuthService.getUserNameData();
-      console.log('form data ', userNameEntered);
     });
     //new
     this.sharedService
@@ -64,24 +71,21 @@ export class AddNewImageComponent implements OnInit {
       .subscribe((userFirstNameEntered) => {
         this.userFirstNameSubmitted =
           this.userAuthService.getUserFirstNameData();
-        console.log('form data ', userFirstNameEntered);
       });
     this.sharedService
       .getUserFirstNameData()
       .subscribe((userLastNameEntered) => {
         this.userLastNameSubmitted = this.userAuthService.getUserLastNameData();
-        console.log('form data ', userLastNameEntered);
       });
     //^^^new
     //  this.userNameSubmitted = this.sharedService
-    console.log('userNameSubmitted', this.userNameSubmitted);
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     const username = this.userNameSubmitted;
     //
     const userlastName = this.userLastNameSubmitted;
     const userfirstName = this.userFirstNameSubmitted;
     //
-    console.log('username is ', username);
+
     if (this.imagePost && this.imagePost.postId) {
       this.isImageNew = false;
     }
@@ -114,11 +118,11 @@ export class AddNewImageComponent implements OnInit {
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     const arrayBuffer = new ArrayBuffer(byteString.length);
     const intArray = new Uint8Array(arrayBuffer);
-  
+
     for (let i = 0; i < byteString.length; i++) {
       intArray[i] = byteString.charCodeAt(i);
     }
-  
+
     return new Blob([arrayBuffer], { type: mimeString });
   }
 
@@ -146,7 +150,7 @@ export class AddNewImageComponent implements OnInit {
           console.log(error);
         },
       });
-      delay(1000000);
+
     } finally {
       this.isImageSent = true;
       setTimeout(() => {
@@ -174,14 +178,6 @@ export class AddNewImageComponent implements OnInit {
   async onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-      const fileSize = file.size;
-      console.log('FILE SIZE');
-      console.log(fileSize);
-      // if (fileSize > 10000000) {
-      //   alert('File size is too big: ' + fileSize);
-      //   // this.isFormComplete = false;
-      //   // this.removeImages;
-      // } else {
         const reader = new FileReader();
         reader.onload = async (fileReaderEvent) => {
           if (fileReaderEvent.target) {

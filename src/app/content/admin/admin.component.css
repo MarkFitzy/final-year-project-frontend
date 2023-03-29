@@ -4,7 +4,7 @@
   position: -webkit-sticky !important;
   top: 0 !important; /* required */
   z-index: 1000 !important;
-    
+
   }
 
 table {
@@ -33,5 +33,11 @@ table {
     color: #efefef;
     display: flex;
     align-items: center;
-    
+
+}
+
+.adminPostOnFocus:hover {
+  color: #00C5AB;
+  cursor: pointer;
+
 }

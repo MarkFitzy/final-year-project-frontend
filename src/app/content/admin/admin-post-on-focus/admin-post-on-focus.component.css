@@ -50,8 +50,13 @@ h2 {
 }
 
 .toolbar {
-    background-color: #00C5AB;
-  }
+  background-color: #00C5AB !important;
+  position: sticky !important;
+position: -webkit-sticky !important;
+top: 0 !important; /* required */
+z-index: 1000 !important;
+
+}
 
   .example-form {
     display: flex;
@@ -213,4 +218,20 @@ h2 {
 
   .userNamePostorComment {
     cursor: pointer;
+  }
+  .adminIcon {
+    color: #efefef;
+    display: flex;
+    align-items: center;
+
+}
+.admin {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+  @media screen and (max-width: 820px) {
+    .addCommentBox {
+      width: 90%;
+    }
   }

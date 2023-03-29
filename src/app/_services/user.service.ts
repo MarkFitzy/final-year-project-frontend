@@ -21,7 +21,6 @@ export class UserService {
   }
 
   public login(loginData: any){{
-    console.log(loginData);
     return this.http.post(this.PATH_OF_API + "/authenticate", loginData,{headers:this.requestHeader});
   }}
 

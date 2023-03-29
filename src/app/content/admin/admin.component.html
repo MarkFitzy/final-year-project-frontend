@@ -30,7 +30,7 @@
 <div class="mt-5 p-3">
   <div class="table-responsive">
   <table mat-table [dataSource]="postDetails" class="mat-elevation-z8">
-  
+
     <!-- Position Column -->
     <ng-container matColumnDef="ID">
       <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -42,15 +42,15 @@
       <th mat-header-cell *matHeaderCellDef> Image </th>
       <td mat-cell *matCellDef="let element"> <button mat-icon-button class="btn-image" (click)="showPhoto(element)"><mat-icon >image</mat-icon></button> </td>
     </ng-container>
-  
+
     <!-- Name Column -->
     <div [hidden] = "!hideColumns">
     <ng-container matColumnDef="Caption" >
       <th mat-header-cell *matHeaderCellDef> Caption </th>
-      <td mat-cell *matCellDef="let element"> {{element.postCaption}} </td>
+      <td mat-cell *matCellDef="let element" (click)="postOnFocus(element.postId)" class="adminPostOnFocus"> {{element.postCaption}} </td>
     </ng-container>
   </div>
-  
+
     <!-- Weight Column -->
     <div [hidden] = "!hideColumns">
     <ng-container matColumnDef="Description">
@@ -70,7 +70,7 @@
       <td mat-cell *matCellDef="let element"> {{element.postRating}} </td>
     </ng-container>
   </div>
-  
+
     <!-- Symbol Column -->
     <!-- Symbol Column -->
 <ng-container matColumnDef="User Name">
@@ -101,11 +101,11 @@
       <td mat-cell *matCellDef="let element">  <button mat-icon-button class="btn-delete-post" (click) = "deletePost(element.postId)"><mat-icon >cancel</mat-icon></button></td>
     </ng-container>
 
-   
-  
+
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
 </div>
-</div> 
+</div>

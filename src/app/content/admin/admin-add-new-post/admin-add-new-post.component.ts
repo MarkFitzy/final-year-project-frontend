@@ -54,15 +54,12 @@ export class AdminAddNewPostComponent implements OnInit {
   ngOnInit(): void {
     this.sharedService.getUserNameData().subscribe((userNameEntered) => {
       this.userNameSubmitted = userNameEntered;
-      console.log('form data ', userNameEntered);
       this.isLoggedIn();
-      
+
     });
     //  this.userNameSubmitted = this.sharedService
-    console.log('userNameSubmitted', this.userNameSubmitted);
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     const username = this.userNameSubmitted;
-    console.log('username is ', username);
     if (this.imagePost && this.imagePost.postId) {
       this.isImageNew = false;
     }
@@ -93,11 +90,11 @@ export class AdminAddNewPostComponent implements OnInit {
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     const arrayBuffer = new ArrayBuffer(byteString.length);
     const intArray = new Uint8Array(arrayBuffer);
-  
+
     for (let i = 0; i < byteString.length; i++) {
       intArray[i] = byteString.charCodeAt(i);
     }
-  
+
     return new Blob([arrayBuffer], { type: mimeString });
   }
 
@@ -130,7 +127,7 @@ export class AdminAddNewPostComponent implements OnInit {
       this.isImageSent = true;
       setTimeout(() => {
     this.router.navigateByUrl('/admin');
-    
+
       },6000);
     }
   }
@@ -154,14 +151,6 @@ export class AdminAddNewPostComponent implements OnInit {
   async onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-      const fileSize = file.size;
-      console.log('FILE SIZE');
-      console.log(fileSize);
-      // if (fileSize > 10000000) {
-      //   alert('File size is too big: ' + fileSize);
-      //   // this.isFormComplete = false;
-      //   // this.removeImages;
-      // } else {
         const reader = new FileReader();
         reader.onload = async (fileReaderEvent) => {
           if (fileReaderEvent.target) {
