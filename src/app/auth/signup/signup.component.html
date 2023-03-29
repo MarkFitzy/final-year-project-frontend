@@ -3,7 +3,7 @@
     <div class="logo">
       <a [routerLink]="'/landing'">
         <img src="assets/images/macro-white.png" width="95px" height="55px">
-      </a> 
+      </a>
     </div>
     <div class="text-center">
       <div class="signup-icon"><mat-icon>assignment_ind</mat-icon>Signup</div></div>
@@ -40,9 +40,9 @@
               <input matInput placeholder="Password" ngModel [type]="isHidden ? 'password' : 'text'"  name="userPassword"  id="userPassword" autocomplete="disabled" minlength="3" required>
               <mat-icon class="hidePassword" (click)="isHidden = !isHidden" matSuffix>{{isHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
-          
+
             <div class="d-flex justify-content-between">
-              <button [routerLink]="'/login'" mat-button color="primary">Already have an account?</button>
+              <a [routerLink]="'/login'" mat-flat-button color="primary" class="existingAccount">Already have an account?</a>
               <button mat-stroked-button color="primary" type="submit" [disabled]="!SignInForm.valid">Submit</button>
             </div>
           </form>

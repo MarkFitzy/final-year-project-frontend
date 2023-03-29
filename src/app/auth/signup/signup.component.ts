@@ -21,19 +21,10 @@ export class SignupComponent {
   constructor( private userService: UserService, private router: Router, private userAuthService: UserAuthService, private sharedService: SharedService) {}
   isUserLoggedOn : boolean | undefined;
 
-  
+
   signup(SignInForm: NgForm) {
         console.log("login is completed");
-        console.log(SignInForm.value);
         this.userService.signup(SignInForm.value).subscribe({next: (response:any) => {
-          // this.userAuthService.setUserFirstNameData(response.user.userFirstName);
-          // this.userAuthService.setUserLastNameData(response.user.userLastName);
-        // console.log("USERFIRSTNAMEDATA");
-        // console.log(this.userAuthService.getUserNameData())
-        // this.userFirstNameEntered = response.user.userFirstName;
-        // this.userLastNameEntered = response.user.userLastNameEntered;
-        // this.sharedService.setUserFirstNameData(this.userFirstNameEntered);
-        // this.sharedService.setUserFirstNameData(this.userLastNameEntered);
           this.router.navigate(['/login']);
 
         }, error: (error) => {

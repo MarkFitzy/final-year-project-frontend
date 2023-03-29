@@ -12,10 +12,5 @@ export interface ImagePost {
     userLastName: string,
     postType: string,
     userName: string,
-    
-}
 
-export interface Comment {
-    id?: number;
-    commentText: string;
-  }
+}

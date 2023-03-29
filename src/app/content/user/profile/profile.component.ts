@@ -41,36 +41,20 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.sharedService.getUserNameData().subscribe((userNameEntered) => {
       this.userNameSubmitted = this.userAuthService.getUserNameData();
-      console.log('form data ');
-      console.log(this.userNameSubmitted);
-      
+
+
     });
-    // this.sharedService.getUserLastNameData().subscribe((userLastNameEntered) => {
-    //   this.userLastNameSubmitted = this.userAuthService.getUserLastNameData();
-    //   console.log('form data ');
-    //   console.log(this.userLastNameSubmitted);
-      
-    // });
-    // this.sharedService.getUserFirstNameData().subscribe((userFirstNameEntered) => {
-    //   this.userFirstNameSubmitted = this.userAuthService.getUserFirstNameData();
-    //   console.log('form data ');
-    //   console.log(this.userFirstNameSubmitted);
-      
-    // });
     this.userAuthService.getToken();
-    console.log(this.userAuthService.getToken());
     this.isLoggedIn();
     this.getAllPosts();}
-    //delete above
   public isLoggedIn() {
     this.userAuthService.isUserLoggedIn = false;
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
 
     return this.userAuthService.isLoggedIn();
-    
+
   }
   searchByKeyword(searchKeyword = this.userNameSubmitted) {
-    console.log(searchKeyword);
     this.postDetails = [];
     this.getAllPosts(searchKeyword);
   }
@@ -99,7 +83,6 @@ export class ProfileComponent implements OnInit {
       )
       .subscribe({
         next: (response: ImagePost[]) => {
-          console.log(response);
           this.postDetails = response;
           this.postDetails.reverse();
           this.numberOfPosts= response.length;
@@ -111,28 +94,6 @@ export class ProfileComponent implements OnInit {
         },
       });
   }
-
-
-  // public getUser(searchKey = this.userNameSubmitted) {
-  //   this.userService
-  //     .getUser(searchKey)
-  //     .pipe(
-  //       map((x: User[], i) =>
-  //         x.map((user: User) =>
-  //           this.imageProcessingService.createImages(user)
-  //         )
-  //       )
-  //     )
-  //     .subscribe({
-  //       next: (response: ImagePost[]) => {
-  //         console.log(response);
-  //         this.postDetails = response;
-  //       },
-  //       error: (error: HttpErrorResponse) => {
-  //         console.log(error);
-  //       },
-  //     });
-  // }
 
   postOnFocus(postId : any) {
     this.router.navigate(['/post-on-focus', {postId : postId}]);

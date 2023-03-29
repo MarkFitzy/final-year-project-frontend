@@ -37,7 +37,7 @@ mat-grid-tile {
 .search-container {
     position: relative;
   }
-  
+
   .search-button {
     position: absolute;
     left: 10px;
@@ -46,7 +46,7 @@ mat-grid-tile {
     z-index: 1;
     border-color: none;
   }
-  
+
   .cancel-button {
     position: absolute;
     right: 10px;
@@ -54,7 +54,7 @@ mat-grid-tile {
     transform: translateY(-50%);
     z-index: 1;
   }
-  
+
   .example-input {
     height: 36px;
     padding: 0 36px 0 46px;
@@ -67,7 +67,7 @@ mat-grid-tile {
     -o-border-radius: 25px;
     border-color: none;
 }
-  
+
   @media (max-width: 768px) {
     .example-input {
       font-size: 1rem;
@@ -104,8 +104,16 @@ img.image {
   -o-border-radius: 25px ;
 }
 
-.noPost {
-    margin-left: 350px;
+.my-mobile-card {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  background-clip:padding-box;
+  border-radius: 25px ;
+  -webkit-border-radius: 25px ;
+  -moz-border-radius: 25px ;
+  -ms-border-radius: 25px ;
+  -o-border-radius: 25px ;
 }
 
 /* #specs {
@@ -117,6 +125,7 @@ img.image {
 .Caption {
     font-size: 1.5em;
     text-align: center;
+    cursor: pointer;
 }
 
 p {
@@ -166,6 +175,22 @@ p {
     color:#403d39;
     cursor: pointer;
 }
+@media (max-width: 880px) {
+  .mobile-image {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .mobile.body {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 880px) {
+  .col-gap {
+    column-gap: 10px;
+    justify-content: center;
+  }
+}
+
 
 /* .cameraSpecs {
     margin-left: 200px;

@@ -7,13 +7,15 @@ import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { CommentsService, Comment} from 'src/app/_services/comments.service';
 import { SharedService } from 'src/app/_services/shared.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-post-on-focus',
-  templateUrl: './post-on-focus.component.html',
-  styleUrls: ['./post-on-focus.component.css']
+  selector: 'app-admin-post-on-focus',
+  templateUrl: './admin-post-on-focus.component.html',
+  styleUrls: ['./admin-post-on-focus.component.css']
 })
-export class PostOnFocusComponent implements OnInit {
+export class AdminPostOnFocusComponent implements OnInit {
+
 
   isUserLoggedOn: boolean | undefined;
   imagePost: ImagePost | undefined;
@@ -37,6 +39,7 @@ export class PostOnFocusComponent implements OnInit {
     this.sharedService.getUserNameData().subscribe((userNameEntered) => {
       this.userNameSubmitted = this.userAuthService.getUserNameData();
     });
+
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     this.fetchComments();
   }
@@ -78,4 +81,16 @@ export class PostOnFocusComponent implements OnInit {
     this.router.navigate(['/otherProfiles']);
   }
 
+  deleteComment(comment: Comment) {
+    this.commentsService.deleteComment(comment).subscribe({next:
+      (data:any)=> {
+        // Reload comments after deleting
+        this.fetchComments();
+      }, error: (error: HttpErrorResponse) => {
+        console.log(error);
+    }},
+    );
+  }
+
 }
+

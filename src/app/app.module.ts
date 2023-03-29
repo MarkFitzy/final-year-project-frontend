@@ -44,6 +44,9 @@ import { AdminAddNewPostComponent } from './content/admin/admin-add-new-post/adm
 import { ProfileComponent } from './content/user/profile/profile.component';
 import { OtherProfilesComponent } from './content/user/other-profiles/other-profiles.component';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
+import { AdminPostOnFocusComponent } from './content/admin/admin-post-on-focus/admin-post-on-focus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +63,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AdminAddNewPostComponent,
     ProfileComponent,
     OtherProfilesComponent,
+    AdminPostOnFocusComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatMenuModule,
+    MatListModule,
+    MatBadgeModule,
   ],
   exports: [
     BrowserModule,

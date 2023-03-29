@@ -1,7 +1,7 @@
 .mat-stepper-horizontal {
     margin-top: 50px;
   }
-  
+
   .mat-mdc-form-field {
     margin-top: 50px;
   }
@@ -34,4 +34,7 @@
 .signup-page {
   background-color: #FAFAFA !important;
 }
-
+.existingAccount {
+  background-color: white;
+  color: #6769CC ;
+}
