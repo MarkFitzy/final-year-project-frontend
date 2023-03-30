@@ -123,11 +123,11 @@ img.image {
 } */
 
 .Caption {
-    font-size: 1.5em;
+    font-size: 30px;
     text-align: center;
     cursor: pointer;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 p {
     text-align: center;
 }
@@ -139,7 +139,6 @@ p {
 .col-gap {
     column-gap: 25px;
 }
-
 #mycontainer {
     display: flex;
     flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */

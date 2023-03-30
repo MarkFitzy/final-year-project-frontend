@@ -4,7 +4,7 @@
   position: -webkit-sticky;
   top: 0; /* required */
   z-index: 1000;
-    
+
 }
 
 mat-grid-tile {
@@ -15,6 +15,9 @@ mat-grid-tile {
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
 
+}
+.usernameProfile {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans;
 }
 
 .container {
@@ -66,9 +69,9 @@ img.image {
   -moz-border-radius: 25px ;
   -ms-border-radius: 25px ;
   -o-border-radius: 25px ;
-    
-  
-  
+
+
+
 }
 .posts{
     margin-left: 110px;

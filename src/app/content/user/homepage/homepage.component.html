@@ -123,6 +123,40 @@ Aperture: {{ p.postAperture }}"
           </div>
           <div class="mt-2">
             <p>{{ p.postDescription }}</p>
+          </div><div class="mt-3">
+            <p>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Architectural'">
+                <mat-icon style="vertical-align: middle;">location_city</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Nature'">
+                <mat-icon style="vertical-align: middle;">terrain</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Abstract'">
+                <mat-icon style="vertical-align: middle;">photo_filter</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Macro'">
+                <mat-icon style="vertical-align: middle;">lens</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Food'">
+                <mat-icon style="vertical-align: middle;">restaurant</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Sports'">
+                <mat-icon style="vertical-align: middle;">pool</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Portrait'">
+                <mat-icon style="vertical-align: middle;">photo_album</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Landscape'">
+                <mat-icon style="vertical-align: middle;">panorama</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Black & White'">
+                <mat-icon style="vertical-align: middle;">iso</mat-icon>
+              </span>
+              <span class="postTypeIcon" *ngIf="p.postType == 'Announcement'">
+                <mat-icon style="vertical-align: middle;">notifications</mat-icon>
+              </span>
+              {{ p.postType}}
+            </p>
           </div>
           <!-- <div class="mt-2">
         <mat-chip-list><mat-chip>{{ p.postType}}</mat-chip></mat-chip-list>

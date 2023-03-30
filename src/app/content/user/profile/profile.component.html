@@ -26,15 +26,15 @@
   </mat-toolbar>
 
 <div class="d-flex flex-column"></div><div class="d-flex justify-content-center"><mat-card class="profile-title d-flex justify-content-center mt-4">
-    
+
     <div class="profile-text">
       <div class="profile-image p-2" *ngFor="let p of postDetails; let i = index">
         <img *ngIf="i === 0" [src]="p.postImages[p.postImages.length - 1].url" class="rounded-avatar">
       </div>
-      <h1>@{{userNameSubmitted}}</h1>
-      <h2>{{numberOfPosts}} Posts</h2></div>
-    
-    
+      <h1 class="usernameProfile">@{{userNameSubmitted}}</h1>
+      <h2 >{{numberOfPosts}} Posts</h2></div>
+
+
 </mat-card>
 </div><div>
 <div class="posts mt-4">
