@@ -1,10 +1,6 @@
 {
   "name": "final-year-project-macro-social",
   "version": "0.0.0",
-  "engines": {
-    "node": "16.13.0",
-    "npm": "8.19.2"
-  },
   "scripts": {
     "ng": "ng",
     "start": "http-server-spa dist/final-year-project-macro-social index.html $PORT",
