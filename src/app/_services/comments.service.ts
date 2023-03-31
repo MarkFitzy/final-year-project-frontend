@@ -19,14 +19,14 @@ export class CommentsService {
   constructor(private http: HttpClient) {}
 
   getAllComments(){
-    return this.http.get<Comment[]>("http://localhost:9090/getAllComments");
+    return this.http.get<Comment[]>("https://macro-social.herokuapp.com/getAllComments");
   }
 
   saveComment(comment: Comment) {
-    return this.http.post<Comment>("http://localhost:9090/addComment", comment);
+    return this.http.post<Comment>("https://macro-social.herokuapp.com/addComment", comment);
   }
 
   deleteComment(comment: Comment) {
-    return this.http.delete<Comment>("http://localhost:9090/deleteComment/" + comment.commentId);
+    return this.http.delete<Comment>("https://macro-social.herokuapp.com/deleteComment/" + comment.commentId);
   }
 }
