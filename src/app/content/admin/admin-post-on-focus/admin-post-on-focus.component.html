@@ -75,16 +75,17 @@
                   <mat-icon style="vertical-align: middle;">panorama</mat-icon>
                 </span>
                 <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Black & White'">
-                  <mat-icon style="vertical-align: middle;">iso</mat-icon>
+                  <mat-icon style="vertical-align: middle;">brightness_6</mat-icon>
                 </span>
                 <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Announcement'">
                   <mat-icon style="vertical-align: middle;">notifications</mat-icon>
                 </span>
                 {{ imagePost?.postType}}
               </span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>photo_filter</mat-icon>{{imagePost?.postPhotoshop}}</span>
             </div>
           </div>
           </mat-card-content>

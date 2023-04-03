@@ -83,13 +83,13 @@
           <br>
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Camera Model</mat-label>
-            <input maxlength="20" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera" [disabled]="isImageSent" minlength="3" required/>
+            <input maxlength="30" matInput placeholder="Camera used for photo" [(ngModel)]="imagePost.postCamera"  name="postCamera" [disabled]="isImageSent" minlength="3" required/>
             <mat-icon matSuffix>camera_alt</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Camera Lens</mat-label>
-            <input maxlength="20" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens" [disabled]="isImageSent" minlength="3" required/>
+            <input maxlength="40" matInput placeholder="Lens used for image" [(ngModel)]="imagePost.postLens"  name="postLens" [disabled]="isImageSent" minlength="3" required/>
             <mat-icon matSuffix>camera</mat-icon>
           </mat-form-field>
 

@@ -82,6 +82,7 @@ export class AdminComponent implements OnInit {
       .subscribe({
         next: (response: ImagePost[]) => {
           this.postDetails = response;
+          this.postDetails.reverse();
         },
         error: (error: HttpErrorResponse) => {
           console.log(error);

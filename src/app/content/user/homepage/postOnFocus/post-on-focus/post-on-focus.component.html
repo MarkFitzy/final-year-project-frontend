@@ -76,16 +76,17 @@
                   <mat-icon style="vertical-align: middle;">panorama</mat-icon>
                 </span>
                 <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Black & White'">
-                  <mat-icon style="vertical-align: middle;">iso</mat-icon>
+                  <mat-icon style="vertical-align: middle;">brightness_6</mat-icon>
                 </span>
                 <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Announcement'">
                   <mat-icon style="vertical-align: middle;">notifications</mat-icon>
                 </span>
                 {{ imagePost?.postType}}
               </span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>photo_filter</mat-icon>{{imagePost?.postPhotoshop}}</span>
             </div>
           </div>
           </mat-card-content>
@@ -98,7 +99,7 @@
             <mat-list class="d-flex flex-column align-items-left justify-content-center">
               <mat-list-item *ngFor="let comment of filteredComments" class="d-flex flex-column align-items-lg-start">
                 <div class="commentBox">
-                  <div class="commentUserName"><span *ngIf="comment.commentUsername == 'MacroSocialAdmin93!'"><b #usernameInput  (click)="onSelectedMacroProfile()" usernameInput class="userNamePostorComment">Macro:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername != 'MacroSocialAdmin93!'"><b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{comment.commentUsername}}</b><b>:</b> {{comment.comment}}</span></div>
+                  <div class="commentUserName"><span *ngIf="comment.commentUsername == 'MacroSocialAdmin93!'"><b #usernameInput  (click)="onSelectedMacroProfile()" usernameInput class="userNamePostorComment">Macro:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername == userNameSubmitted"><b #usernameInput  (click)="onYourSelectedProfile()" usernameInput class="userNamePostorComment">You:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername != 'MacroSocialAdmin93!'|| this.userNameSubmitted"><b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{comment.commentUsername}}</b><b>:</b> {{comment.comment}}</span></div>
                 </div>
               </mat-list-item>
             </mat-list>
