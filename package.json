@@ -1,6 +1,10 @@
 {
   "name": "final-year-project-macro-social",
   "version": "0.0.0",
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.19.2"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
