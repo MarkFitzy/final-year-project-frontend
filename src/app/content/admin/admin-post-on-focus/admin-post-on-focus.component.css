@@ -1,4 +1,4 @@
-.post-info, .cameraTypes, .imagePost, .imageCard, .Back, .photoOnFocus, .imageInfo, h2, .example-form, .example-input, .search-btn, .close-btn, .postInfo, .postCaption, .postDescription, .adminPage, .toolbar, .bMenu, .commentBox .commentUserName, .commentBox .commentBody, .commentBox .commentDate, .commentBox .commentActions, .commentBox .commentActions button:hover, .commentBox .commentActions button:focus, .commentBox .commentActions .reply, .commentBox .commentActions .like, .commentBox .commentActions .like i, .commentBox .commentActions .like.active i, .addCommentBox, .commentSection, .userNamePostorComment, .adminIcon, .admin {
+.post-info, .cameraTypes, .imagePost, .imageCard, .Back, .photoOnFocus, .imageInfo, h2, .example-form, .example-input, .search-btn, .close-btn, .postInfo, .postCaption, .postDescription, .adminPage, .toolbar, .bMenu, .commentBox .commentUserName, .commentBox .commentBody, .commentBox .commentDate, .commentBox .commentActions, .commentBox .commentActions button:hover, .commentBox .commentActions button:focus, .commentBox .commentActions, .commentBox .commentActions, .commentBox, .addCommentBox, .commentSection, .userNamePostorComment, .adminIcon, .admin {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -60,19 +60,6 @@
   flex-grow: 1;
   }
 
-  .search-btn, .close-btn {
-  display: none;
-  }
-
-  @media (max-width: 600px) {
-  .example-form {
-  display: none;
-  }
-
-  .search-btn, .close-btn {
-  display: block;
-  }
-  }
 
   @media only screen and (max-width: 880px) {
   .logo {
@@ -130,155 +117,6 @@
   margin-top: 5px;
   }
 
-  .commentBox .commentDate {
-  font-size: 12px;
-  color: #999;
-  margin-top: 5px;
-  }
-
   .commentBox .commentActions {
   margin-top: 5px;
   }
-  commentActions .dislike {
-    margin-right: 10px;
-    }
-
-    .commentBox .commentActions .dislike i {
-    margin-right: 5px;
-    }
-
-    .commentBox .commentActions .dislike.active i {
-    color: red;
-    }
-
-    .commentBox .commentActions .report {
-    color: #999;
-    }
-
-    .commentBox .commentActions .report:hover {
-    color: #f44336;
-    }
-
-    .commentBox .commentActions .report:focus {
-    outline: none;
-    }
-
-    .commentBox .commentActions .report i {
-    margin-right: 5px;
-    }
-
-    .commentBox .commentActions .report.active i {
-    color: #f44336;
-    }
-
-    .commentBox .commentActions .replies {
-    color: #999;
-    }
-
-    .commentBox .commentActions .replies:hover {
-    color: #2196f3;
-    }
-
-    .commentBox .commentActions .replies:focus {
-    outline: none;
-    }
-
-    .commentBox .commentActions .replies i {
-    margin-right: 5px;
-    }
-
-    .commentBox .commentActions .replies.active i {
-    color: #2196f3;
-    }
-
-    .commentBox .commentActions .num-replies {
-    margin-left: 5px;
-    }
-
-    .commentBox .commentActions .num-replies:before {
-    content: "(";
-    }
-
-    .commentBox .commentActions .num-replies:after {
-    content: ")";
-    }
-
-    .commentBox .commentActions .num-replies.active:before {
-    color: #2196f3;
-    }
-
-    .commentBox .commentActions .num-replies.active:after {
-    color: #2196f3;
-    }
-
-    .commentBox .reply-form {
-    margin-top: 10px;
-    }
-
-    .commentBox .reply-form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    }
-
-    .commentBox .replies {
-    margin-left: 20px;
-    margin-bottom: 10px;
-    }
-
-    .commentBox .replies .commentBox {
-    margin-left: 20px;
-    }
-
-    .commentBox .replies .commentBox .commentUserName {
-    font-size: 14px;
-    font-weight: bold;
-    }
-
-    .commentBox .replies .commentBox .commentDate {
-    font-size: 10px;
-    }
-
-    .commentBox .replies .commentBox .commentBody {
-    font-size: 14px;
-    margin-top: 5px;
-    }
-
-    .commentBox .replies .commentBox .commentActions {
-    margin-top: 5px;
-    }
-
-    .commentBox .replies .commentBox .commentActions button {
-    font-size: 12px;
-    color: #999;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-    outline: none;
-    }
-
-    .commentBox .replies .commentBox .commentActions button:hover {
-    color: #2196f3;
-    }
-
-    .commentBox .replies .commentBox .commentActions button.active {
-    color: #2196f3;
-    }
-
-    .commentBox .replies .commentBox .commentActions .like,
-    .commentBox .replies .commentBox .commentActions .dislike {
-    margin-right: 5px;
-    }
-
-    .commentBox .replies .commentBox .commentActions .report i,
-    .commentBox .replies .commentBox .commentActions .replies i {
-    margin-right: 3px;
-    }
-
-    .commentBox .replies .commentBox .reply-form textarea {
-    margin-top: 10px;
-    }
-
-    .commentBox .replies .commentBox .reply-form .reply-btn {
-    margin-top: 5px;
-    }

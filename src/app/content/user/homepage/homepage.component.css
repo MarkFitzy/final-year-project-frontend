@@ -43,13 +43,6 @@ input.example-input {
   border-color: none;
 }
 
-@media (max-width: 768px) {
-  .example-input {
-    font-size: 1rem;
-    padding: 10px 16px;
-  }
-}
-
 img.image {
   border-radius: 40px;
   max-width: 500px;
@@ -82,10 +75,6 @@ img.image {
 
 p {
   text-align: center;
-}
-
-.rating-list li.selected {
-  color: #ffd700;
 }
 
 .col-gap {
