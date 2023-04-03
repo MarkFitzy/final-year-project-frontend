@@ -12,5 +12,6 @@ export interface ImagePost {
     userLastName: string,
     postType: string,
     userName: string,
+    postPhotoshop: string,
 
 }

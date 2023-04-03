@@ -11,6 +11,7 @@ import { PostImageService } from 'src/app/_services/post-imageservice';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
+import * as exifr from 'exifr';
 
 @Component({
   selector: 'app-admin-add-new-post',
@@ -38,6 +39,7 @@ export class AdminAddNewPostComponent implements OnInit {
     postType: this.selected,
     userFirstName: '',
     userLastName: '',
+    postPhotoshop: '',
   };
 
   constructor(
@@ -75,6 +77,7 @@ export class AdminAddNewPostComponent implements OnInit {
       postImages: [],
       userName: "Macro",
       postType: "Announcement",
+      postPhotoshop: '',
     };
 
     // this.postForm.get('userName').setValue(this.userNameSubmitted);
@@ -151,32 +154,62 @@ export class AdminAddNewPostComponent implements OnInit {
   async onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = async (fileReaderEvent) => {
-          if (fileReaderEvent.target) {
-            const image = fileReaderEvent.target.result as string;
-            const orientation = await this.imageCompress.getOrientation(file);
-            this.imageCompress.compressFile(image, orientation, 50, 50).then((compressedImage) => {
-              const compressedImageBlob = this.dataURItoBlob(compressedImage);
-              const compressedFile = new File([compressedImageBlob], file.name, { type: compressedImageBlob.type });
-              const fileHandle: FileHandle = {
-                file: compressedFile,
-                url: this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(compressedFile)),
-              };
-              this.imagePost.postImages.push(fileHandle);
-              this.isImageSelected = true;
-              this.isFormComplete = true;
-            });
-          }
-        };
-        reader.readAsDataURL(file);
-      }
+      const reader = new FileReader();
+      reader.onload = async (fileReaderEvent) => {
+        if (fileReaderEvent.target) {
+          const image = fileReaderEvent.target.result as string;
+          const orientation = await this.imageCompress.getOrientation(file);
+          this.imageCompress.compressFile(image, orientation, 50, 50).then(async (compressedImage) => {
+            const exifData = await exifr.parse(file);
+            const cameraModel = exifData.Model || 'N/A';
+            const lensModel = exifData.LensModel || 'N/A';
+            const aperture = exifData.FNumber ? `f/${exifData.FNumber}` : 'N/A';
+            const photoshopUsed = exifData.Software && exifData.Software.includes('Adobe Photoshop') ? 'Adobe Photoshop' :
+                      exifData.Software && exifData.Software.includes('Lightroom') ? 'Adobe Lightroom' :
+                      exifData.Software && exifData.Software.includes('Snapseed') ? 'Snapseed' :
+                      exifData.Software && exifData.Software.includes('Google') ? 'Snapseed' :
+                      exifData.Software && exifData.Software.includes('Express') ? 'Photoshop Express' :
+                      exifData.Software && exifData.Software.includes('PicsArt') ? 'PicsArt' :
+                      exifData.Software && exifData.Software.includes('Pixlr') ? 'Pixlr' :
+                      exifData.Software && exifData.Software.includes('Google Photos') ? 'Google Photos' :
+                      exifData.Software && exifData.Software.includes('Prisma') ? 'Prisma' :
+                      exifData.Software && exifData.Software.includes('Facetune') ? 'Facetune' :
+                      exifData.Software && exifData.Software.includes('VSCO') ? 'VSCO' :
+                      exifData.Software && exifData.Software.includes('Afterlight ') ? 'Afterlight ' :
+                      exifData.Software && exifData.Software.includes('TouchRetouch') ? 'TouchRetouch' :
+                      exifData.Software && exifData.Software.includes('Pixtica') ? 'Pixtica' :
+                      exifData.Software && exifData.Software.includes('Affinity Photo') ? 'Affinity Photo' :
+                      'Not Photoshopped';
+
+            console.log('Camera Model:', cameraModel);
+            console.log('Lens Model:', lensModel);
+            console.log('Aperture:', aperture);
+            console.log('Photoshop Used:', photoshopUsed);
+
+            this.imagePost.postCamera = cameraModel;
+            this.imagePost.postLens = lensModel;
+            this.imagePost.postAperture = aperture;
+            this.imagePost.postPhotoshop = photoshopUsed;
+
+            const compressedImageBlob = this.dataURItoBlob(compressedImage);
+            const compressedFile = new File([compressedImageBlob], file.name, { type: compressedImageBlob.type });
+            const fileHandle: FileHandle = {
+              file: compressedFile,
+              url: this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(compressedFile)),
+            };
+            this.imagePost.postImages.push(fileHandle);
+            this.isImageSelected = true;
+            this.isFormComplete = true;
+          });
+        }
+      };
+      reader.readAsDataURL(file);
     }
+  }
 
   removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);
     this.isImageSelected = false;
   }
 }
-
 

@@ -38,6 +38,7 @@ export class PostManagementService implements Resolve<ImagePost>{
       postImages: [],
       userFirstName: "",
       userLastName: "",
+      postPhotoshop: "",
 
     }
   }

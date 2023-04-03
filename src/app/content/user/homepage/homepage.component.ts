@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatChipEvent,MatChipInputEvent } from '@angular/material/chips';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { SharedService } from 'src/app/_services/shared.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class HomepageComponent implements OnInit {
   myFormControl = new FormControl("");
   isSearchOpen = false;
   isMobile: boolean = false;
+  userNameSubmitted: string | null;
 
   constructor(
     private userAuthService: UserAuthService,
@@ -34,10 +36,14 @@ export class HomepageComponent implements OnInit {
     public userService: UserService,
     private imagePostService: PostImageService,
     private imageProcessingService: ImageProcessingService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
+    this.sharedService.getUserNameData().subscribe((userNameEntered) => {
+      this.userNameSubmitted = this.userAuthService.getUserNameData();
+    });
     this.breakpointObserver
     .observe(['(max-width: 840px)'])
     .subscribe((state: BreakpointState) => {
@@ -105,5 +111,11 @@ export class HomepageComponent implements OnInit {
 
   toggleSearch(): void {
     this.isSearchOpen = !this.isSearchOpen;
+  }
+  onYourSelectedProfile(){
+    const username = this.userNameSubmitted;
+    this.usernameInput = username|| "";
+    this.userAuthService.setUserProfileNameData(this.usernameInput);
+    this.router.navigate(['/otherProfiles']);
   }
 }

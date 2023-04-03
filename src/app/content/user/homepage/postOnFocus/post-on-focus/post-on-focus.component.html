@@ -39,20 +39,56 @@
       <div class="post-info">
         <mat-card>
           <mat-card-content>
+            <div class="postInfo">
             <div class="mt-3">
-              <h2>{{imagePost?.postCaption}}</h2>
+              <h2 class="postCaption">{{imagePost?.postCaption}}</h2>
             </div>
             <div class="mt-3">
-              <h4>{{imagePost?.postDescription}}</h4>
+              <h4 class="postDescription">{{imagePost?.postDescription}}</h4>
             </div>
             <div class="mt-3">
               <p>By <b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{imagePost?.userName}}</b></p>
             </div>
             <div class="mt-3">
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span>
-              <span class="cameraTypes d-flex justify-content-center"><mat-icon>center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              <span class="cameraTypes d-flex justify-content-center">
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Architectural'">
+                  <mat-icon style="vertical-align: middle;">location_city</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Nature'">
+                  <mat-icon style="vertical-align: middle;">terrain</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Abstract'">
+                  <mat-icon style="vertical-align: middle;">photo_filter</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Macro'">
+                  <mat-icon style="vertical-align: middle;">lens</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Food'">
+                  <mat-icon style="vertical-align: middle;">restaurant</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Sports'">
+                  <mat-icon style="vertical-align: middle;">pool</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Portrait'">
+                  <mat-icon style="vertical-align: middle;">photo_album</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Landscape'">
+                  <mat-icon style="vertical-align: middle;">panorama</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Black & White'">
+                  <mat-icon style="vertical-align: middle;">brightness_6</mat-icon>
+                </span>
+                <span class="postTypeIcon" *ngIf="imagePost?.postType == 'Announcement'">
+                  <mat-icon style="vertical-align: middle;">notifications</mat-icon>
+                </span>
+                {{ imagePost?.postType}}
+              </span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>camera_alt</mat-icon> {{imagePost?.postCamera}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>camera</mat-icon>{{imagePost?.postLens}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>center_focus_weak</mat-icon>{{imagePost?.postAperture}}</span>
+              <span class="cameraTypes d-flex justify-content-center mt-1"><mat-icon>photo_filter</mat-icon>{{imagePost?.postPhotoshop}}</span>
             </div>
+          </div>
           </mat-card-content>
           <!-- Add Comment code here-->
           <mat-divider></mat-divider>
@@ -63,19 +99,22 @@
             <mat-list class="d-flex flex-column align-items-left justify-content-center">
               <mat-list-item *ngFor="let comment of filteredComments" class="d-flex flex-column align-items-lg-start">
                 <div class="commentBox">
-                  <div class="commentUserName"><b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{comment.commentUsername}}</b><b>:</b> {{comment.comment}}</div>
+                  <div class="commentUserName"><span *ngIf="comment.commentUsername == 'MacroSocialAdmin93!'"><b #usernameInput  (click)="onSelectedMacroProfile()" usernameInput class="userNamePostorComment">Macro:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername == userNameSubmitted"><b #usernameInput  (click)="onYourSelectedProfile()" usernameInput class="userNamePostorComment">You:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername != userNameSubmitted && comment.commentUsername !== 'MacroSocialAdmin93!'" ><b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{comment.commentUsername}}</b><b>:</b> {{comment.comment}}</span></div>
                 </div>
               </mat-list-item>
             </mat-list>
             <mat-card class="addCommentBox mx-auto mt-4">
-            <mat-form-field>
-              <input matInput [(ngModel)]="newComment.comment" placeholder="Add a comment">
-            </mat-form-field>
-            <button mat-icon-button (click)="submitComment()" [disabled]="newComment.comment.length < 3 || newComment.comment.length > 30" class="sendComment"><mat-icon >send</mat-icon></button>
-          </mat-card>
+              <div class="comment-container">
+                <mat-form-field>
+                  <input matInput [(ngModel)]="newComment.comment" placeholder="Add a comment">
+                </mat-form-field>
+                <button mat-icon-button (click)="submitComment()" [disabled]="newComment.comment.length < 3 || newComment.comment.length > 30" class="sendComment"><mat-icon>send</mat-icon></button>
+              </div>
+            </mat-card>
           </div>
         </mat-card>
       </div>
     </div>
   </div>
 </div>
+

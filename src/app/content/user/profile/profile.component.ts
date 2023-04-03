@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
   userFirstNameSubmitted: string | any;
   userLastNameSubmitted: string | any;
   numberOfPosts : number;
+  mostCommonCamera: string | null = null;
+
 
   constructor(
     private userAuthService: UserAuthService,
@@ -58,6 +60,31 @@ export class ProfileComponent implements OnInit {
     this.postDetails = [];
     this.getAllPosts(searchKeyword);
   }
+  getMostCommonCamera() {
+    const cameraCount: { [camera: string]: number } = {};
+
+    for (const post of this.postDetails) {
+      if (post.postCamera) {
+        if (!cameraCount[post.postCamera]) {
+          cameraCount[post.postCamera] = 1;
+        } else {
+          cameraCount[post.postCamera]++;
+        }
+      }
+    }
+
+    let maxCount = 0;
+    let mostCommonCamera = null;
+
+    for (const camera in cameraCount) {
+      if (cameraCount[camera] > maxCount) {
+        maxCount = cameraCount[camera];
+        mostCommonCamera = camera;
+      }
+    }
+
+    this.mostCommonCamera = mostCommonCamera;
+  }
 
   public logout() {
     this.userAuthService.isUserLoggedIn = false;
@@ -85,7 +112,8 @@ export class ProfileComponent implements OnInit {
         next: (response: ImagePost[]) => {
           this.postDetails = response;
           this.postDetails.reverse();
-          this.numberOfPosts= response.length;
+          this.numberOfPosts = response.length;
+          this.getMostCommonCamera();
           this.userFirstNameSubmitted = this.postDetails.userFirstName;
           this.userFirstNameSubmitted = this.postDetails.userLastName;
         },

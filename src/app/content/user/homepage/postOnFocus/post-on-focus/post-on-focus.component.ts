@@ -78,4 +78,17 @@ export class PostOnFocusComponent implements OnInit {
     this.router.navigate(['/otherProfiles']);
   }
 
+  onSelectedMacroProfile(){
+    this.usernameInput = "Macro";
+    this.userAuthService.setUserProfileNameData(this.usernameInput);
+    this.router.navigate(['/otherProfiles']);
+  }
+
+  onYourSelectedProfile(){
+    const username = this.userNameSubmitted;
+    this.usernameInput = username|| "";
+    this.userAuthService.setUserProfileNameData(this.usernameInput);
+    this.router.navigate(['/otherProfiles']);
+  }
+
 }
