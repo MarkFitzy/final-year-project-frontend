@@ -12,18 +12,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "budgets": [
-    {
-      "type": "initial",
-      "maximumWarning": "12mb",
-      "maximumError": "12mb"
-    }
-  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.2.0",
     "@angular/cdk": "^14.2.5",
-    "@angular/cli": "~14.2.6",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/compiler-cli": "^14.2.0",
@@ -44,7 +36,6 @@
     "material": "^0.5.2",
     "ngx-bootstrap": "^0.0.1",
     "ngx-image-compress": "^13.1.16",
-    "path": "^0.12.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "typescript": "~4.7.2",
@@ -62,5 +53,22 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.7.2"
+  },
+  "config": {
+    "buildOptimizer": true,
+    "optimization": {
+      "scripts": true,
+      "styles": {
+        "minify": true,
+        "inlineCritical": true
+      }
+    },
+    "budgets": [
+      {
+        "type": "initial",
+        "maximumWarning": "500kb",
+        "maximumError": "1mb"
+      }
+    ]
   }
 }
