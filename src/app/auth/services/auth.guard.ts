@@ -31,7 +31,6 @@ export class AuthGuard implements CanActivate {
         if (match) {
           return true;
         } else {
-          this.router.navigate(['/error']);
           return false;
         }
       }

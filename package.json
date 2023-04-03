@@ -8,7 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --configuration production --aot",
+    "build": "ng build --configuration production --aot --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -52,6 +52,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "source-map-explorer": "^2.5.3",
     "typescript": "~4.7.2"
   },
   "config": {

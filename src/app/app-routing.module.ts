@@ -9,7 +9,6 @@ import { AddNewImageComponent } from './content/user/add-new-image/add-new-image
 import { AuthGuard } from './auth/services/auth.guard';
 import { PostOnFocusComponent } from './content/user/homepage/postOnFocus/post-on-focus/post-on-focus.component';
 import { PostManagementService } from './_services/post-management.service';
-import { ErrorComponent } from './error/error/error.component';
 import { AdminAddNewPostComponent } from './content/admin/admin-add-new-post/admin-add-new-post.component';
 import { ProfileComponent } from './content/user/profile/profile.component';
 import { OtherProfilesComponent } from './content/user/other-profiles/other-profiles.component';
@@ -18,7 +17,6 @@ import { AdminPostOnFocusComponent } from './content/admin/admin-post-on-focus/a
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'error', component: ErrorComponent },
   { path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent },
   { path: 'landing', component: LandingComponent},
