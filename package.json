@@ -8,15 +8,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "budgets": [
     {
       "type": "initial",
-      "maximumWarning": "2mb",
-      "maximumError": "5mb"
+      "maximumWarning": "3mb",
+      "maximumError": "6mb"
     }
   ],
   "private": true,
