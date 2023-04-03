@@ -99,7 +99,7 @@
             <mat-list class="d-flex flex-column align-items-left justify-content-center">
               <mat-list-item *ngFor="let comment of filteredComments" class="d-flex flex-column align-items-lg-start">
                 <div class="commentBox">
-                  <div class="commentUserName"><span *ngIf="comment.commentUsername == 'MacroSocialAdmin93!'"><b #usernameInput  (click)="onSelectedMacroProfile()" usernameInput class="userNamePostorComment">Macro:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername == userNameSubmitted"><b #usernameInput  (click)="onYourSelectedProfile()" usernameInput class="userNamePostorComment">You:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername != userNameSubmitted && comment.commentUsername !== 'MacroSocialAdmin93!'" ><b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{comment.commentUsername}}</b><b>:</b> {{comment.comment}}</span></div>
+                  <div class="commentUserName"><span *ngIf="comment.commentUsername == 'MacroPhotography23'"><b #usernameInput  (click)="onSelectedMacroProfile()" usernameInput class="userNamePostorComment">Macro:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername == userNameSubmitted"><b #usernameInput  (click)="onYourSelectedProfile()" usernameInput class="userNamePostorComment">You:</b> {{comment.comment}}</span><span *ngIf="comment.commentUsername != userNameSubmitted && comment.commentUsername !== 'MacroPhotography23'" ><b #usernameInput  (click)="onSelectedProfile($event)" usernameInput class="userNamePostorComment">{{comment.commentUsername}}</b><b>:</b> {{comment.comment}}</span></div>
                 </div>
               </mat-list-item>
             </mat-list>

@@ -1,25 +1,3 @@
-<!-- <mat-toolbar class="toolbar">
-  <span
-    ><div class="logo">
-      <img
-        src="assets/images/macro-white.png"
-        width="95px"
-        height="55px"
-      /></div
-  ></span>
-  <div class="btn-toolbar pull-right">
-    <button mat-button class="btn mr-2" [routerLink]="'/addNewImage'">
-      <mat-icon>camera_enhance</mat-icon>Add Image
-    </button>
-    <button mat-raised-button color="warn" (click)="logout()" class="btn mr-2">
-      Logout
-    </button>
-  </div>
-</mat-toolbar> -->
-
-<!--Github Branch
-Use This Code!!!!!-->
-
 <mat-toolbar class="toolbar d-flex justify-content-between">
   <span
     ><div class="logo">
@@ -227,11 +205,9 @@ Use This Code!!!!!-->
                 >
               </div>
               <div
-                [hidden]="p.username == 'Macro'"
                 class="col-6 d-flex justify-content-around"
               >
                 <mat-icon
-                  [hidden]="p.username == 'Macro'"
                   class="cameraSpecs"
                   matTooltip="Camera Model: {{ p.postCamera }}  |
 Lens: {{ p.postLens }}  |
