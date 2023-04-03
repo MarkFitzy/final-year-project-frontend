@@ -1,15 +1,15 @@
-.toolbar {
-  background-color: #00C5AB;
-}
 
-mat-grid-tile {
-  border: 1px solid lightgray;
+mat-grid-tile,
+input.example-input {
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+}
 
+mat-grid-tile {
+  border: 1px solid lightgray;
 }
 
 .container {
@@ -19,52 +19,38 @@ mat-grid-tile {
   justify-content: space-between;
 }
 
-/* mat-card {
-  background: none;
-  border: none;
-  box-shadow: none;
-} */
-
-
-
 .image-layout {
   max-width: 80%;
   max-height: 70%;
-  margin-left: auto;
-  margin-right: auto;
-
+  margin: 0 auto;
 }
+
 .search-container {
   position: relative;
 }
 
-.search-button {
+.search-button,
+.cancel-button {
   position: absolute;
-  left: 10px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
-  border-color: none;
+}
+
+.search-button {
+  left: 10px;
 }
 
 .cancel-button {
-  position: absolute;
   right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
 }
 
 .example-input {
   height: 36px;
   padding: 0 36px 0 46px;
 }
+
 input.example-input {
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
   border-color: none;
 }
 
@@ -76,14 +62,15 @@ input.example-input {
 }
 
 img.image {
-  border-radius: 40px 40px 40px 40px;
-  -webkit-border-radius: 40px 40px 40px 40px;
-  -moz-border-radius: 40px 40px 40px 40px;
-  -ms-border-radius: 40px 40px 40px 40px;
-  -o-border-radius: 40px 40px 40px 40px;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
   max-width: 500px;
   max-height: 500px;
 }
+
 .search-button.hide {
   display: none;
 }
@@ -92,42 +79,26 @@ img.image {
   vertical-align: middle;
 }
 
-.my-card {
-margin-bottom: 20px;
-box-sizing: border-box;
-border: 3px solid transparent;
-background-clip:padding-box;
-border-radius: 25px ;
--webkit-border-radius: 25px ;
--moz-border-radius: 25px ;
--ms-border-radius: 25px ;
--o-border-radius: 25px ;
-}
-
+.my-card,
 .my-mobile-card {
-margin-bottom: 20px;
-box-sizing: border-box;
-border: 3px solid transparent;
-background-clip:padding-box;
-border-radius: 25px ;
--webkit-border-radius: 25px ;
--moz-border-radius: 25px ;
--ms-border-radius: 25px ;
--o-border-radius: 25px ;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
-
-/* #specs {
-  gap: 10px;
-  align-self: flex-end;
-  margin-left: 10px;
-} */
 
 .Caption {
   font-size: 30px;
   text-align: center;
   cursor: pointer;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 p {
   text-align: center;
 }
@@ -139,9 +110,10 @@ p {
 .col-gap {
   column-gap: 25px;
 }
+
 #mycontainer {
   display: flex;
-  flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
 }
@@ -154,19 +126,16 @@ p {
   margin-left: 50px;
 }
 
-.usernameChip {
+.usernameChip,
+.yourUsernameChip {
   color: #000;
-  background-color: #E5E4E2;
   box-shadow: #F2F3F4;
   opacity: 70%;
 }
 
 .yourUsernameChip {
-  color: #000;
   background-color: #828e84;
-  box-shadow: #F2F3F4;
   opacity: 50%;
-
 }
 
 .profile-button {
@@ -178,22 +147,23 @@ p {
   color: #eee;
 }
 
-.profile-button:hover{
-  color:#403d39;
+.profile-button:hover {
+  color: #403d39;
   cursor: pointer;
 }
+
 @media (max-width: 880px) {
-.mobile-image {
-  width: 100%;
-  margin-bottom: 15px;
-}
-.mobile.body {
-  overflow-x: hidden;
-}
+  .mobile-image {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .mobile.body {
+    overflow-x: hidden;
+  }
 }
 @media (max-width: 880px) {
-.col-gap {
-  column-gap: 10px;
-  justify-content: center;
-}
+  .col-gap {
+    column-gap: 10px;
+    justify-content: center;
+  }
 }

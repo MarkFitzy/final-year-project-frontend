@@ -1,18 +1,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
-/* You can add global styles to this file, and also import other style files */
 body, html {
   margin: 0 !important;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   background-color: #FAFAFA !important;
 }
-
-/* .container{
-
-  max-height: 95vh;
-} */
 .logo {
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
@@ -33,18 +26,6 @@ body, html {
   -ms-transform: scale(1.5);
   -o-transform: scale(1.5);
 }
-
-.power-off {
-  background-color: #f9614d !important;
-  color: #eee !important;
-}
-
-.power-off:hover{
-  background-color: #f44336 !important;
-  color: #eee !important;
-
-}
-
 .upload {
   cursor: pointer !important;
   background-color: #010101 !important;
@@ -61,12 +42,11 @@ body, html {
 }
 
 .toolbar {
-  background-color: #00C5AB !important;
-  position: sticky !important;
-position: -webkit-sticky !important;
-top: 0 !important; /* required */
-z-index: 1000 !important;
-
+  background-color: #00C5AB;
+  position: sticky;
+position: -webkit-sticky;
+top: 0; /* required */
+z-index: 1000;
 }
 
 .bMenu{

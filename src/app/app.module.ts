@@ -26,7 +26,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/services/auth.guard';
-// import { AuthInterceptor } from './auth/services/auth.interceptor';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AdminComponent } from './content/admin/admin.component';
 import { ShowPhotoDialogComponent } from './content/admin/show-photo-dialog/show-photo-dialog.component';
@@ -34,7 +33,6 @@ import { AddNewImageComponent } from './content/user/add-new-image/add-new-image
 import { HomepageComponent } from './content/user/homepage/homepage.component';
 import { PostOnFocusComponent } from './content/user/homepage/postOnFocus/post-on-focus/post-on-focus.component';
 import { ErrorComponent } from './error/error/error.component';
-import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { PostImageService } from './_services/post-imageservice';
 import { SharedService } from './_services/shared.service';
@@ -53,7 +51,6 @@ import { AdminPostOnFocusComponent } from './content/admin/admin-post-on-focus/a
     SignupComponent,
     LoginComponent,
     LandingComponent,
-    HeaderComponent,
     AdminComponent,
     HomepageComponent,
     AddNewImageComponent,
