@@ -1,4 +1,4 @@
-.post-info, .cameraTypes, .imagePost, .imageCard, .Back, .photoOnFocus, .imageInfo, h2, .example-form, .example-input {
+.post-info, .cameraTypes, .imagePost, .imageCard, .Back, .photoOnFocus, .imageInfo, h2 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -51,20 +51,6 @@ h2 {
   font-size: 44px;
 }
 
-.example-form {
-  display: flex;
-  align-items: center;
-}
-
-.example-input {
-  flex-grow: 1;
-}
-
-@media (max-width: 600px) {
-  .example-form {
-    display: none;
-  }
-}
 
 @media only screen and (max-width: 880px) {
   .logo {
@@ -91,17 +77,8 @@ h2 {
     font-size: 14px;
   }
 
-  .comments-section {
-    margin-top: 10px;
-  }
 
-  .comment {
-    margin-bottom: 10px;
-  }
 
-  .add-comment {
-    margin-top: 10px;
-  }
 
   textarea {
     width: 100%;
@@ -155,17 +132,6 @@ h2 {
   cursor: pointer;
   }
 
-  .adminIcon {
-  color: #efefef;
-  display: flex;
-  align-items: center;
-  }
-
-  .admin {
-  color: #fff;
-  display: flex;
-  align-items: center;
-  }
 
   @media screen and (max-width: 820px) {
   .addCommentBox {
@@ -241,9 +207,7 @@ h2 {
   .comment {
   margin-bottom: 10px;
   }
-  .add-comment {
-  margin-top: 10px;
-  }
+
   textarea {
   width: 100%;
   }
