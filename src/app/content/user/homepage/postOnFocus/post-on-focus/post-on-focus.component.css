@@ -1,4 +1,4 @@
-.post-info, .cameraTypes, .imagePost, .imageCard, .Back, .photoOnFocus, .imageInfo, h2, .example-form, .example-input, .search-btn, .close-btn {
+.post-info, .cameraTypes, .imagePost, .imageCard, .Back, .photoOnFocus, .imageInfo, h2, .example-form, .example-input {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,7 +18,7 @@
   background: none;
 }
 
-.Back, .search-btn, .close-btn {
+.Back {
   background-color: transparent;
   border: none;
   color: #fff;
@@ -60,17 +60,9 @@ h2 {
   flex-grow: 1;
 }
 
-.search-btn, .close-btn {
-  display: none;
-}
-
 @media (max-width: 600px) {
   .example-form {
     display: none;
-  }
-
-  .search-btn, .close-btn {
-    display: block;
   }
 }
 
@@ -148,22 +140,6 @@ h2 {
   outline: none;
 }
 
-.commentBox .commentActions .reply {
-  margin-right: 10px;
-}
-
-.commentBox .commentActions .like {
-  margin-right: 10px;
-}
-
-.commentBox .commentActions .like i {
-  margin-right: 5px;
-}
-
-.commentBox .commentActions .like.active i {
-  color: red;
-}
-
 .addCommentBox {
   background-color: #f2f2f2;
   width: 40%;
@@ -237,20 +213,6 @@ h2 {
   margin-left: 20px;
   }
 
-  @media screen and (max-width: 600px) {
-  .logo {
-  margin-bottom: 10px;
-  }
-  .btn-toolbar {
-  margin-top: 10px;
-  }
-  .Back {
-  font-size: 16px;
-  }
-  .container {
-  padding: 10px;
-  }
-  }
 
   @media screen and (max-width: 880px) {
   .photoOnFocus {
@@ -299,11 +261,6 @@ h2 {
   margin-top: 5px;
   }
 
-  .commentBox .commentDate {
-  font-size: 12px;
-  color: #999;
-  margin-top: 5px;
-  }
 
   .commentBox .commentActions {
   margin-top: 5px;
@@ -315,22 +272,6 @@ h2 {
 
   .commentBox .commentActions button:focus {
   outline: none;
-  }
-
-  .commentBox .commentActions .reply {
-  margin-right: 10px;
-  }
-
-  .commentBox .commentActions .like {
-  margin-right: 10px;
-  }
-
-  .commentBox .commentActions .like i {
-  margin-right: 5px;
-  }
-
-  .commentBox .commentActions .like.active i {
-  color: red;
   }
 
   .addCommentBox {
