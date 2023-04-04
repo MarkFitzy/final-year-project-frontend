@@ -25,13 +25,13 @@
         <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)">
           <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
             <mat-label>User Name</mat-label>
-            <input matInput ngModel type="text" name="userName" placeholder="user name" id="userName" class="form-control mb-3">
+            <input matInput ngModel type="text" name="userName" placeholder="user name" id="userName" class="form-control">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100" style="font-size: 18px">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Please enter your password" ngModel [type]="isHidden ? 'password' : 'text'" name="userPassword" id="userPassword" autocomplete="disabled" class="form-control mb-3">
+            <input matInput placeholder="Please enter your password" ngModel [type]="isHidden ? 'password' : 'text'" name="userPassword" id="userPassword" autocomplete="disabled" class="form-control">
             <mat-icon class="hidePassword" (click)="isHidden = !isHidden" matSuffix>{{isHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
 
