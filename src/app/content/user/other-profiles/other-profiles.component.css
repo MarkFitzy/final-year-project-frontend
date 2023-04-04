@@ -45,6 +45,16 @@ img.image {
     vertical-align: middle;
 }
 
+.profile-title {
+  background-color: #ffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 .profile-card {
     padding: none !important;
   margin-bottom: 20px;
@@ -62,23 +72,35 @@ img.image {
 
 
 }
+.profile-info {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-username {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.profile-posts {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.profile-most-common {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #777;
+}
 .posts{
     margin-left: 110px;
     margin-top: 20px;
 }
-.profile-title {
-    vertical-align: top;
-    display: inline-block;
-    text-align: center;
-    width: 90%;
-}
-
-/* #specs {
-    gap: 10px;
-    align-self: flex-end;
-    margin-left: 10px;
-} */
-
 
 .col-gap {
     column-gap: 25px;
