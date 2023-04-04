@@ -30,7 +30,7 @@
             <img *ngIf="isLast" [src]="p.postImages[p.postImages.length - 1]?.url" class="rounded-avatar">
           </div>
           <div class="profile-info">
-            <h1 class="profile-username">@{{userNameSubmitted}}</h1>
+            <h1 class="profile-username">@{{userProfileSelected}}</h1>
             <h2 class="profile-posts">{{numberOfPosts}} posts</h2>
             <h3 class="profile-most-common" *ngIf="mostCommonCamera">Most Popular Camera: {{ mostCommonCamera }}</h3>
           </div>
@@ -38,7 +38,7 @@
       </mat-card>
 </div><div>
 <div class="posts mt-4">
-<h2 class=" d-flex justify-content-start">Posts</h2></div>
+<h2 class=" d-flex justify-content-center">Posts</h2></div>
 <div class="d-flex justify-content-center">
   <mat-card class="profile-title d-flex justify-content-center">
     <div class="container mt-5" id="mycontainer" gutter="25px">
