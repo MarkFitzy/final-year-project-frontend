@@ -7,10 +7,12 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "heroku-postbuild": "ng build --configuration production && np, install -g http-server-spa",
+    "start": "http-server-spa dist/final-year-project-macro-social index.html $PORT",
     "build": "ng build --configuration production --aot --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+
   },
   "private": true,
   "dependencies": {
