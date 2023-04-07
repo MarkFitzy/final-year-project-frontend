@@ -35,8 +35,9 @@
     margin: 0;
   }
 
-  @-moz-document url-prefix() {
-    :host ::ng-deep .mat-icon {
+  @supports (-moz-appearance:none) {
+    :host ::ng-deep .mat-form-field .mat-form-field-suffix .mat-icon,
+    :host ::ng-deep .mat-form-field .mat-form-field-prefix .mat-icon {
       display: inline-flex;
       align-items: center;
       vertical-align: middle;
