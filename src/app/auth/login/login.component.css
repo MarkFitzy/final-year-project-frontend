@@ -34,3 +34,11 @@
   .error-message {
     margin: 0;
   }
+
+  @-moz-document url-prefix() {
+    :host ::ng-deep .mat-icon {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+    }
+  }
