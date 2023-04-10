@@ -114,23 +114,23 @@ export class AdminAddNewPostComponent implements OnInit {
   }
 
   addPost(postForm: NgForm) {
-    const delay = (ms:any) => new Promise(res => setTimeout(res,ms));
+    const delay = (ms: any) => new Promise((res) => setTimeout(res, ms));
     const postFormData = this.prepareFormData(this.imagePost);
-    try{
-    this.postImageService.addImage(postFormData).subscribe({
-      next: (response: ImagePost) => {
-        postForm.reset();
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error);
-      },
-        });}
-    finally{
+    try {
+      this.postImageService.addImage(postFormData).subscribe({
+        next: (response: ImagePost) => {
+          postForm.reset();
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log(error);
+        },
+      });
+
+    } finally {
       this.isImageSent = true;
       setTimeout(() => {
-    this.router.navigateByUrl('/admin');
-
-      },6000);
+        this.router.navigateByUrl('/admin');
+      }, 6000);
     }
   }
 
