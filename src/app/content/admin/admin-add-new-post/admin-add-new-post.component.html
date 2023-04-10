@@ -52,13 +52,17 @@
             <mat-label>Image Caption</mat-label>
             <input maxlength="20" matInput placeholder="Enter caption for image" [(ngModel)]="imagePost.postCaption"  name="postCaption" [disabled]="isImageSent" minlength="3" required/>
             <mat-icon matSuffix>crop_original</mat-icon>
+            <button mat-icon-button matSuffix (click)="toggleEmojiPicker('caption')"><mat-icon>insert_emoticon</mat-icon></button>
           </mat-form-field>
+          <emoji-mart *ngIf="showCaptionEmojiPicker" #captionEmojiPicker set="apple" (emojiSelect)="onEmojiSelect($event, 'caption')"></emoji-mart>
 
           <mat-form-field appearance="outline" class="w-100">
               <mat-label>Image Description</mat-label>
               <input maxlength="40" matInput placeholder="Enter description for image" [(ngModel)]="imagePost.postDescription" name="postDescription" [disabled]="isImageSent" minlength="3" required/>
               <mat-icon matSuffix>code</mat-icon>
+              <button mat-icon-button matSuffix (click)="toggleEmojiPicker('caption')"><mat-icon>insert_emoticon</mat-icon></button>
             </mat-form-field>
+            <emoji-mart *ngIf="showCaptionEmojiPicker" #captionEmojiPicker set="apple" (emojiSelect)="onEmojiSelect($event, 'caption')"></emoji-mart>
             <h1>3. Optional: Camera Details</h1>
             <mat-divider></mat-divider>
             <mat-form-field appearance="outline" class="mt-2 w-100">
