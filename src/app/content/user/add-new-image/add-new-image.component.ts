@@ -13,7 +13,6 @@ import { UserService } from 'src/app/_services/user.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import * as exifr from 'exifr';
-import { EmojiEvent } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @Component({
   selector: 'app-add-new-image',
@@ -30,8 +29,6 @@ export class AddNewImageComponent implements OnInit {
   isImageSent = false;
   selected = 'Nature';
   isImageNew = true;
-  showCaptionEmojiPicker = false;
-  showDescriptionEmojiPicker = false;
   isMobile: boolean = false;
   imagePost: ImagePost = {
     postId: 0,
@@ -236,23 +233,6 @@ export class AddNewImageComponent implements OnInit {
     }
   }
 
-  toggleEmojiPicker(field: 'caption' | 'description'): void {
-    if (field === 'caption') {
-      this.showCaptionEmojiPicker = !this.showCaptionEmojiPicker;
-      this.showDescriptionEmojiPicker = false;
-    } else if (field === 'description') {
-      this.showDescriptionEmojiPicker = !this.showDescriptionEmojiPicker;
-      this.showCaptionEmojiPicker = false;
-    }
-  }
-  onEmojiSelect(event: EmojiEvent, field: 'caption' | 'description') {
-    const emoji = event.emoji.native;
-    if (field === 'caption') {
-      this.imagePost.postCaption += emoji;
-    } else if (field === 'description') {
-      this.imagePost.postDescription += emoji;
-    }
-  }
 
   removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);

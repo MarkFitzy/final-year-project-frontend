@@ -12,7 +12,6 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import * as exifr from 'exifr';
-import { EmojiEvent } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @Component({
   selector: 'app-admin-add-new-post',
@@ -28,8 +27,6 @@ export class AdminAddNewPostComponent implements OnInit {
   isFormComplete = false;
   selected = 'Nature';
   isImageNew = true;
-  showCaptionEmojiPicker = false;
-  showDescriptionEmojiPicker = false;
   imagePost: ImagePost = {
     postId: 0,
     postCaption: '',
@@ -207,24 +204,6 @@ export class AdminAddNewPostComponent implements OnInit {
         }
       };
       reader.readAsDataURL(file);
-    }
-  }
-
-  toggleEmojiPicker(field: 'caption' | 'description'): void {
-    if (field === 'caption') {
-      this.showCaptionEmojiPicker = !this.showCaptionEmojiPicker;
-      this.showDescriptionEmojiPicker = false;
-    } else if (field === 'description') {
-      this.showDescriptionEmojiPicker = !this.showDescriptionEmojiPicker;
-      this.showCaptionEmojiPicker = false;
-    }
-  }
-  onEmojiSelect(event: EmojiEvent, field: 'caption' | 'description') {
-    const emoji = event.emoji.native;
-    if (field === 'caption') {
-      this.imagePost.postCaption += emoji;
-    } else if (field === 'description') {
-      this.imagePost.postDescription += emoji;
     }
   }
 

@@ -41,7 +41,6 @@ import { PostOnFocusComponent } from './content/user/homepage/postOnFocus/post-o
 import { OtherProfilesComponent } from './content/user/other-profiles/other-profiles.component';
 import { ProfileComponent } from './content/user/profile/profile.component';
 import { LandingComponent } from './landing/landing.component';
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +85,6 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatMenuModule,
     MatListModule,
     MatBadgeModule,
-    PickerModule,
   ],
   exports: [
   ],
