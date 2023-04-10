@@ -99,9 +99,9 @@ export class AdminAddNewPostComponent implements OnInit {
       postLens: '',
       postAperture: '',
       postImages: [],
-      userFirstName: userfirstName,
-      userLastName: userlastName,
-      userName: username,
+      userFirstName: 'Macro',
+      userLastName: 'Macro',
+      userName: 'Macro',
       postType: '',
       postPhotoshop: ""
 
