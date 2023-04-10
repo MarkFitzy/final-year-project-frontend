@@ -42,4 +42,10 @@
       align-items: center;
       vertical-align: middle;
     }
+    .accountIcon {
+      margin-top: -51px;
+    }
+    .hidePassword {
+      margin-top: -51px;
+    }
   }
