@@ -25,7 +25,6 @@ export class AdminAddNewPostComponent implements OnInit {
   isImageSelected = false;
   isImageSent = false;
   isFormComplete = false;
-  selected = 'Nature';
   isImageNew = true;
   imagePost: ImagePost = {
     postId: 0,
@@ -36,7 +35,7 @@ export class AdminAddNewPostComponent implements OnInit {
     postAperture: '',
     postImages: [],
     userName: '',
-    postType: this.selected,
+    postType: '',
     userFirstName: '',
     userLastName: '',
     postPhotoshop: '',
@@ -129,7 +128,7 @@ export class AdminAddNewPostComponent implements OnInit {
     } finally {
       this.isImageSent = true;
       setTimeout(() => {
-        this.router.navigateByUrl('/admin');
+        this.router.navigateByUrl('/homepage');
       }, 6000);
     }
   }
@@ -177,7 +176,6 @@ export class AdminAddNewPostComponent implements OnInit {
                       exifData.Software && exifData.Software.includes('Afterlight ') ? 'Afterlight ' :
                       exifData.Software && exifData.Software.includes('TouchRetouch') ? 'TouchRetouch' :
                       exifData.Software && exifData.Software.includes('Pixtica') ? 'Pixtica' :
-                      exifData.Software && exifData.Software.includes('Affinity Photo') ? 'Affinity Photo' :
                       'Not Photoshopped';
 
             console.log('Camera Model:', cameraModel);
@@ -206,9 +204,11 @@ export class AdminAddNewPostComponent implements OnInit {
     }
   }
 
+
   removeImages(i: number) {
     this.imagePost.postImages.splice(i, 1);
     this.isImageSelected = false;
+    this.isFormComplete = false;
   }
 }
 
