@@ -12,7 +12,6 @@
     "build": "ng build --configuration production --aot --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
-
   },
   "private": true,
   "dependencies": {
@@ -27,6 +26,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@ctrl/ngx-emoji-mart": "^7.1.0",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "exif": "^0.6.0",
