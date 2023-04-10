@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgxImageCompressService } from 'ngx-image-compress';
 import { delay } from 'rxjs';
 import { FileHandle } from 'src/app/_model/file-handle.model';
 import { ImagePost } from 'src/app/_model/imagePost.model';
@@ -11,6 +10,8 @@ import { PostImageService } from 'src/app/_services/post-imageservice';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { UserService } from 'src/app/_services/user.service';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import * as exifr from 'exifr';
 
 @Component({
@@ -19,13 +20,16 @@ import * as exifr from 'exifr';
   styleUrls: ['./admin-add-new-post.component.css']
 })
 export class AdminAddNewPostComponent implements OnInit {
-
   isUserLoggedOn: boolean | undefined;
-  userNameSubmitted: string;
+  userNameSubmitted: string | any;
+  userFirstNameSubmitted: string | any;
+  userLastNameSubmitted: string | any;
   isImageSelected = false;
-  isImageSent = false;
   isFormComplete = false;
+  isImageSent = false;
+  selected = 'Nature';
   isImageNew = true;
+  isMobile: boolean = false;
   imagePost: ImagePost = {
     postId: 0,
     postCaption: '',
@@ -34,11 +38,11 @@ export class AdminAddNewPostComponent implements OnInit {
     postLens: '',
     postAperture: '',
     postImages: [],
-    userName: '',
-    postType: '',
     userFirstName: '',
     userLastName: '',
-    postPhotoshop: '',
+    userName: '',
+    postType: this.selected,
+    postPhotoshop: ''
   };
 
   constructor(
@@ -50,17 +54,40 @@ export class AdminAddNewPostComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private sharedService: SharedService,
     private imageCompress: NgxImageCompressService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
-    this.sharedService.getUserNameData().subscribe((userNameEntered) => {
-      this.userNameSubmitted = userNameEntered;
-      this.isLoggedIn();
-
+    this.breakpointObserver
+    .observe(['(max-width: 600px)'])
+    .subscribe((state: BreakpointState) => {
+      this.isMobile = state.matches;
     });
+    this.isLoggedIn();
+    this.sharedService.getUserNameData().subscribe((userNameEntered) => {
+      this.userNameSubmitted = this.userAuthService.getUserNameData();
+    });
+    //new
+    this.sharedService
+      .getUserFirstNameData()
+      .subscribe((userFirstNameEntered) => {
+        this.userFirstNameSubmitted =
+          this.userAuthService.getUserFirstNameData();
+      });
+    this.sharedService
+      .getUserFirstNameData()
+      .subscribe((userLastNameEntered) => {
+        this.userLastNameSubmitted = this.userAuthService.getUserLastNameData();
+      });
+    //^^^new
     //  this.userNameSubmitted = this.sharedService
     this.imagePost = this.activatedRoute.snapshot.data['postManager'];
     const username = this.userNameSubmitted;
+    //
+    const userlastName = this.userLastNameSubmitted;
+    const userfirstName = this.userFirstNameSubmitted;
+    //
+
     if (this.imagePost && this.imagePost.postId) {
       this.isImageNew = false;
     }
@@ -70,13 +97,15 @@ export class AdminAddNewPostComponent implements OnInit {
       postDescription: '',
       postCamera: '',
       postLens: '',
-      userFirstName: 'Macro',
-      userLastName: 'Social App',
       postAperture: '',
       postImages: [],
-      userName: "Macro",
-      postType: "Announcement",
-      postPhotoshop: '',
+      userFirstName: userfirstName,
+      userLastName: userlastName,
+      userName: username,
+      postType: '',
+      postPhotoshop: ""
+
+      //
     };
 
     // this.postForm.get('userName').setValue(this.userNameSubmitted);
@@ -128,7 +157,7 @@ export class AdminAddNewPostComponent implements OnInit {
     } finally {
       this.isImageSent = true;
       setTimeout(() => {
-        this.router.navigateByUrl('/homepage');
+        this.router.navigateByUrl('/admin');
       }, 6000);
     }
   }
@@ -211,4 +240,3 @@ export class AdminAddNewPostComponent implements OnInit {
     this.isFormComplete = false;
   }
 }
-
