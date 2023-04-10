@@ -48,15 +48,6 @@
     </mat-menu>
   </div>
 </mat-toolbar>
-<ng-template #noPosts>
-  <div class="d-flex justify-content-center mt-5 text-center">
-    <h2 class="noPost">Be the first to add a post!</h2>
-  </div>
-</ng-template>
-
-
-
-    <ng-container *ngIf="postDetails?.length > 0; else noPosts">
       <div class="container mt-5" id="mycontainer" gutter="25px">
         <div class="matCardCenter"></div>
       <div *ngIf="!isMobile" class="row col-gap">
@@ -220,4 +211,3 @@ Aperture: {{ p.postAperture }}"
     </mat-grid-list>
   </div>
 </div>
-  </ng-container>
