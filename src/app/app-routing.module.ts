@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
   { path: 'addNewImage', component: AddNewImageComponent, resolve: {postManager: PostManagementService},  canActivate:[AuthGuard], data:{roles:['User', 'Admin']} },
   { path: 'post-on-focus', component: PostOnFocusComponent, resolve: {postManager: PostManagementService},  canActivate:[AuthGuard], data:{roles:['User']} },
-  { path: 'adminAddNewPost', component: AdminAddNewPostComponent, resolve: {postManager: PostManagementService},  canActivate:[AuthGuard], data:{roles:['User']}},
-  { path: 'profile', component: ProfileComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['Admin']}},
+  { path: 'adminAddNewPost', component: AdminAddNewPostComponent, resolve: {postManager: PostManagementService},  canActivate:[AuthGuard], data:{roles:['Admin']}},
+  { path: 'profile', component: ProfileComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['User']}},
   { path: 'otherProfiles', component: OtherProfilesComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['User']}},
   { path: 'admin-post-on-focus', component: AdminPostOnFocusComponent, resolve: {postManager: PostManagementService}, canActivate:[AuthGuard], data:{roles:['Admin']}},
 ];
