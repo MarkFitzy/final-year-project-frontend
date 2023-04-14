@@ -1,4 +1,4 @@
-<div class="landing-page col-sm-12">
+<div class="landing-page col-sm-12" [ngStyle]="{'background-color': isAlternativeColor ? 'your-alternative-color' : '#00C5AB'}">
   <mat-toolbar class="toolbar d-flex justify-content-between">
     <span><div class="logo"> <img src="assets/images/macro-white.png" width="95px" height="55px"></div></span>
     <span><a [routerLink]="'/login'"><mat-icon class="loginIcon">account_circle</mat-icon></a></span>

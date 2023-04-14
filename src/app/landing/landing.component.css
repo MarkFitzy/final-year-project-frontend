@@ -4,14 +4,6 @@
 
 /* Start Landing Page */
 
-.landing-page {
-    position: relative;
-    background-color: #00C5AB;
-    height: 100%;
-    width: 100vw;
-  height: 100vh;
-}
-
 .landing-page .header-area {
     display: flex;
     padding: 25px 0 0;
@@ -122,14 +114,14 @@
 }
 
 .landing-page .image img {
-    
+
 } */
 
 #camera {
     width: 550px;
     margin-top: 50px;
     max-width: 90%;
-    
+
     display: block;
     /* margin-top: -90px; */
 }

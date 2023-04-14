@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class LandingComponent implements OnInit {
   isUserLoggedOn: boolean | undefined;
+  isAlternativeColor: boolean = false;
   constructor(
     private userAuthService: UserAuthService,
     private router: Router,
@@ -22,7 +23,7 @@ export class LandingComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-  
+
   public isLoggedIn() {
     this.userAuthService.isUserLoggedIn = false;
     this.isUserLoggedOn = this.userAuthService.isUserLoggedIn;
