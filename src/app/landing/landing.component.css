@@ -1,5 +1,5 @@
 .landing-page {
-    background-color: #00C5AB;
+    background-color: #00C5AB !important;
 }
 .logo {
     transform: scale(1.2);
