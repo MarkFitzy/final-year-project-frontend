@@ -54,7 +54,7 @@ export class PostOnFocusComponent implements OnInit {
 
 
       this.comments = comments;
-      this.filteredComments = this.comments.filter(comment => comment.commentPostId === this.imagePost?.postId).reverse();
+      this.filteredComments = this.comments.filter(comment => comment.commentPostId === this.imagePost?.postId);
       this.filteredCommentsLength = this.filteredComments.length;
     });
   }
